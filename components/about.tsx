@@ -20,7 +20,7 @@ export function About() {
           observer.unobserve(el);
         }
       },
-      { threshold: 0.08 }
+      { threshold: 0.08 },
     );
 
     observer.observe(el);
@@ -34,7 +34,7 @@ export function About() {
       className={cn(
         "max-w-[1060px] mx-auto px-7 py-14 border-t border-bg3",
         "transition-all duration-500",
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
       )}
     >
       {/* Section label */}
@@ -50,7 +50,7 @@ export function About() {
           <div className="w-full aspect-[3/4] rounded-[10px] overflow-hidden bg-bg2 border border-bg3">
             <Image
               src="/profile.jpg"
-              alt="Salman Rahman — Senior Full-Stack Engineer"
+              alt="Salman Rahman — Senior Frontend Engineer"
               fill
               className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, 300px"

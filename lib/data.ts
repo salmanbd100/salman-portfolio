@@ -384,7 +384,7 @@ export const ctaCards: CtaCard[] = [
   {
     icon: "\u{1F4C5}",
     label: "Availability",
-    value: "Available now \u00B7 Notice: 1 month",
+    value: "Available now \u00B7 Notice: 2 month",
   },
   {
     icon: "\u{1F4BC}",

@@ -56,23 +56,20 @@ export function Hero() {
         {/* Eyebrow */}
         <div className="font-mono text-[0.68rem] tracking-[0.12em] uppercase text-ink3 mb-3 flex items-center gap-2">
           <span className="w-6 h-px bg-ink3" />
-          Senior Full-Stack Engineer &middot; 9 Years
+          Senior Frontend Engineer &middot; 9 Years
         </div>
 
         {/* Headline */}
         <h1 className="font-serif text-[2.8rem] sm:text-[4rem] font-bold leading-[1.08] tracking-[-0.02em] text-ink mb-3">
           I don&apos;t build features.
-          <br />
-          I build <em className="not-italic text-accent">products</em>.
+          <br />I build <em className="not-italic text-accent">products</em>.
         </h1>
 
         {/* Subtitle */}
         <p className="text-[1rem] text-ink2 leading-[1.8] max-w-[500px] mb-6">
           From Norwegian public sector platforms to Swiss enterprise systems,
           I&apos;ve spent 9 years turning{" "}
-          <strong className="text-ink font-medium">
-            complex requirements
-          </strong>{" "}
+          <strong className="text-ink font-medium">complex requirements</strong>{" "}
           into{" "}
           <strong className="text-ink font-medium">
             products people actually use

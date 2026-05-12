@@ -14,6 +14,7 @@ const tierStyles: Record<SkillTier, string> = {
 export function Skills() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState(skillCategories[0].id);
+  const [panelVisible, setPanelVisible] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -35,6 +36,15 @@ export function Skills() {
   }, []);
 
   const activeCategory = skillCategories.find((c) => c.id === activeTab)!;
+
+  const handleTabChange = (id: string) => {
+    if (id === activeTab) return;
+    setPanelVisible(false);
+    setTimeout(() => {
+      setActiveTab(id);
+      setPanelVisible(true);
+    }, 150);
+  };;
 
   return (
     <section
@@ -65,7 +75,7 @@ export function Skills() {
           {skillCategories.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setActiveTab(cat.id)}
+              onClick={() => handleTabChange(cat.id)}
               className={cn(
                 "bg-transparent border-none text-left",
                 "px-3 py-2 rounded-md",
@@ -83,7 +93,12 @@ export function Skills() {
         </div>
 
         {/* Right panel */}
-        <div key={activeTab} className="animate-fadeIn">
+        <div
+          className={cn(
+            "transition-opacity duration-150",
+            panelVisible ? "opacity-100" : "opacity-0"
+          )}
+        >
           {activeCategory.groups.map((group) => (
             <div key={group.title}>
               <div className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-ink3 mb-2.5 mt-6 first:mt-0 flex items-center gap-2">
