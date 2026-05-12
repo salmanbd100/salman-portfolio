@@ -41,10 +41,10 @@ export function Experience() {
         Experience
         <span className="w-8 h-px bg-accent/40" />
       </div>
-      <h2 className="font-serif text-[2.2rem] tracking-[-0.02em] text-ink mb-2 leading-[1.1]">
+      <h2 className="font-serif text-[2.4rem] font-bold tracking-[-0.02em] text-ink mb-2 leading-[1.1]">
         9 years, global clients.
       </h2>
-      <p className="text-[0.88rem] text-ink3 leading-[1.7] max-w-[560px] mb-9">
+      <p className="text-[0.95rem] text-ink3 leading-[1.75] max-w-[560px] mb-9">
         Norwegian public sector, Swiss enterprise, US startups — delivered
         across time zones in remote-first, Agile environments.
       </p>
@@ -80,19 +80,19 @@ export function Experience() {
 
             {/* Right content */}
             <div>
-              <h3 className="font-serif text-[1.4rem] tracking-[-0.01em] mb-1.5">
+              <h3 className="font-serif text-[1.5rem] font-semibold tracking-[-0.01em] mb-2">
                 {exp.role}
               </h3>
-              <p className="text-[0.83rem] text-ink2 mb-3.5 leading-[1.7]">
+              <p className="text-[0.9rem] text-ink2 mb-4 leading-[1.75]">
                 {exp.summary}
               </p>
 
               {/* Bullets */}
-              <ul className="list-none flex flex-col gap-2 mb-3.5">
+              <ul className="list-none flex flex-col gap-2.5 mb-4">
                 {exp.bullets.map((bullet, i) => (
                   <li
                     key={i}
-                    className="text-[0.8rem] text-ink2 flex gap-2.5 items-start leading-[1.6]"
+                    className="text-[0.875rem] text-ink2 flex gap-2.5 items-start leading-[1.65]"
                   >
                     <span className="text-accent shrink-0 mt-px text-[0.75rem]">
                       →
@@ -114,7 +114,7 @@ export function Experience() {
                 {exp.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-[0.62rem] bg-bg2 text-ink2 border border-bg3 px-2 py-0.5 rounded-[3px]"
+                    className="font-mono text-[0.68rem] bg-bg2 text-ink2 border border-bg3 px-2.5 py-1 rounded-[4px]"
                   >
                     {tag}
                   </span>

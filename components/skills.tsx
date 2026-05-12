@@ -51,10 +51,10 @@ export function Skills() {
         Skills
         <span className="w-8 h-px bg-accent/40" />
       </div>
-      <h2 className="font-serif text-[2.2rem] tracking-[-0.02em] text-ink mb-2 leading-[1.1]">
+      <h2 className="font-serif text-[2.4rem] font-bold tracking-[-0.02em] text-ink mb-2 leading-[1.1]">
         What I bring to your team.
       </h2>
-      <p className="text-[0.88rem] text-ink3 leading-[1.7] max-w-[560px] mb-9">
+      <p className="text-[0.95rem] text-ink3 leading-[1.75] max-w-[560px] mb-9">
         Core expertise in frontend, with backend fluency and DevOps awareness —
         so I can work across the stack without becoming a blocker.
       </p>
@@ -86,7 +86,7 @@ export function Skills() {
         <div key={activeTab} className="animate-fadeIn">
           {activeCategory.groups.map((group) => (
             <div key={group.title}>
-              <div className="text-[0.65rem] font-medium tracking-[0.1em] uppercase text-ink3 mb-2.5 mt-5 first:mt-0 flex items-center gap-2">
+              <div className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-ink3 mb-2.5 mt-6 first:mt-0 flex items-center gap-2">
                 {group.title}
                 <span className="flex-1 h-px bg-bg3" />
               </div>
@@ -95,7 +95,7 @@ export function Skills() {
                   <span
                     key={tag.name}
                     className={cn(
-                      "text-[0.75rem] px-[11px] py-[5px] rounded-[4px] cursor-default",
+                      "text-[0.8rem] px-3 py-1.5 rounded-[5px] cursor-default",
                       tierStyles[tag.tier]
                     )}
                   >
@@ -105,7 +105,7 @@ export function Skills() {
               </div>
             </div>
           ))}
-          <p className="text-[0.75rem] text-ink3 italic mt-4 pt-4 border-t border-bg3">
+          <p className="text-[0.8rem] text-ink3 mt-5 pt-4 border-t border-bg3">
             {activeCategory.note}
           </p>
         </div>

@@ -11,27 +11,27 @@
   --font-serif: var(--font-serif);
   --font-heading: var(--font-serif);
 
-  /* Portfolio design tokens */
-  --color-ink: #0d0c0b;
-  --color-ink2: #3a3835;
-  --color-ink3: #7a7772;
+  /* Portfolio design tokens — clean slate + indigo */
+  --color-ink: #0f172a;
+  --color-ink2: #334155;
+  --color-ink3: #64748b;
 
-  --color-bg: #f6f5f1;
-  --color-bg2: #edeae2;
-  --color-bg3: #e3dfd5;
+  --color-bg: #ffffff;
+  --color-bg2: #f8fafc;
+  --color-bg3: #f1f5f9;
 
-  --color-accent: #1a6b4a;
-  --color-accent2: #2d8f63;
-  --color-accent-bg: #eaf4ef;
-  --color-accent-dark: #155c3e;
+  --color-accent: #2e7d96;
+  --color-accent2: #3a98b4;
+  --color-accent-bg: #e3f2f7;
+  --color-accent-dark: #1f6278;
 
-  --color-amber: #c17f24;
-  --color-amber-bg: #fdf3e3;
+  --color-amber: #f59e0b;
+  --color-amber-bg: #fffbeb;
 
-  --color-blue: #1e4d8c;
-  --color-blue-bg: #e8eff8;
+  --color-blue: #2e7d96;
+  --color-blue-bg: #e3f2f7;
 
-  --color-red: #c0392b;
+  --color-red: #ef4444;
 
   /* shadcn tokens mapped to portfolio palette */
   --color-background: var(--color-bg);
@@ -48,19 +48,19 @@
   --color-muted-foreground: var(--color-ink3);
   --color-accent-foreground: var(--color-accent);
   --color-destructive: var(--color-red);
-  --color-border: var(--color-bg3);
+  --color-border: #e2e8f0;
   --color-input: var(--color-bg3);
   --color-ring: var(--color-accent);
 
   /* Radius */
-  --radius: 6px;
+  --radius: 8px;
   --radius-sm: 4px;
-  --radius-md: 5px;
-  --radius-lg: 6px;
-  --radius-xl: 8px;
-  --radius-2xl: 10px;
-  --radius-3xl: 14px;
-  --radius-4xl: 16px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-2xl: 12px;
+  --radius-3xl: 16px;
+  --radius-4xl: 20px;
 }
 
 @layer base {
@@ -68,7 +68,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-bg text-ink font-sans text-sm leading-relaxed;
+    @apply bg-bg text-ink font-sans text-[0.9375rem] leading-relaxed;
     -webkit-font-smoothing: antialiased;
   }
   html {

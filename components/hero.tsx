@@ -56,30 +56,30 @@ export function Hero() {
         {/* Eyebrow */}
         <div className="font-mono text-[0.68rem] tracking-[0.12em] uppercase text-ink3 mb-3 flex items-center gap-2">
           <span className="w-6 h-px bg-ink3" />
-          Senior Frontend Engineer &middot; 9 Years
+          Senior Full-Stack Engineer &middot; 9 Years
         </div>
 
         {/* Headline */}
-        <h1 className="font-serif text-[2.4rem] sm:text-[3.4rem] leading-[1.06] tracking-[-0.02em] text-ink mb-2">
-          Interfaces that
+        <h1 className="font-serif text-[2.8rem] sm:text-[4rem] font-bold leading-[1.08] tracking-[-0.02em] text-ink mb-3">
+          I don&apos;t build features.
           <br />
-          <em className="italic text-accent">perform</em> at scale.
+          I build <em className="not-italic text-accent">products</em>.
         </h1>
 
         {/* Subtitle */}
-        <p className="text-[0.95rem] text-ink2 leading-[1.75] max-w-[480px] mb-5">
-          I build{" "}
+        <p className="text-[1rem] text-ink2 leading-[1.8] max-w-[500px] mb-6">
+          From Norwegian public sector platforms to Swiss enterprise systems,
+          I&apos;ve spent 9 years turning{" "}
           <strong className="text-ink font-medium">
-            production-grade React applications
+            complex requirements
           </strong>{" "}
-          for global clients &mdash; from Norwegian public sector platforms to
-          Swiss enterprise systems. Frontend specialist with{" "}
-          <strong className="text-ink font-medium">backend fluency</strong>{" "}
-          (Node.js, Express) and hands-on{" "}
+          into{" "}
           <strong className="text-ink font-medium">
-            AI-powered app development
-          </strong>
-          .
+            products people actually use
+          </strong>{" "}
+          &mdash; React, TypeScript, Next.js at the core, with{" "}
+          <strong className="text-ink font-medium">full-stack depth</strong> to
+          own the whole problem.
         </p>
 
         {/* Target countries */}
@@ -137,21 +137,21 @@ export function Hero() {
           <div
             key={stat.label}
             className={cn(
-              "bg-bg2 border border-bg3",
-              "rounded-[10px] px-5 py-4",
-              "flex items-center gap-4",
+              "bg-bg2 border border-bg3 border-l-[3px] border-l-accent/40",
+              "rounded-[10px] px-5 py-5",
+              "flex items-center gap-5",
               "transition-all duration-200 cursor-default",
-              "hover:border-accent2 hover:translate-x-[3px]",
+              "hover:border-l-accent hover:translate-x-[3px]",
             )}
           >
-            <div className="font-serif text-[2.2rem] text-accent leading-none min-w-16">
+            <div className="font-serif text-[3rem] font-bold text-accent leading-none min-w-[5.5rem] shrink-0">
               {stat.value}
             </div>
             <div>
-              <div className="text-[0.68rem] font-medium tracking-[0.06em] uppercase text-ink3 mb-[3px]">
+              <div className="text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-ink3 mb-1">
                 {stat.label}
               </div>
-              <div className="text-[0.8rem] text-ink2 leading-[1.4]">
+              <div className="text-[0.85rem] text-ink2 leading-[1.55]">
                 {stat.description}
               </div>
             </div>

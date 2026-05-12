@@ -121,7 +121,7 @@ export const breadthItems: BreadthItem[] = [
   },
   {
     label: "DevOps Basics",
-    description: "Docker \u00B7 CI/CD \u00B7 Azure DevOps \u00B7 Git workflows",
+    description: "Docker \u00B7 CI/CD \u00B7 AWS \u00B7 Git workflows",
   },
   {
     label: "AI-Powered Apps",
@@ -155,7 +155,7 @@ export const experiences: Experience[] = [
       "Svelte",
       "Node.js",
       "REST API",
-      "Azure DevOps",
+      "AWS",
     ],
   },
   {
@@ -280,7 +280,7 @@ export const skillCategories: SkillCategory[] = [
           { name: "Git", tier: "core" },
           { name: "GitHub", tier: "core" },
           { name: "Bitbucket", tier: "strong" },
-          { name: "Azure DevOps", tier: "strong" },
+          { name: "AWS", tier: "strong" },
         ],
       },
       {

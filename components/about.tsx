@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { breadthItems } from "@/lib/data";
 
@@ -44,10 +45,17 @@ export function About() {
 
       {/* About grid */}
       <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-12 items-start">
-        {/* Left — photo placeholder */}
+        {/* Left — profile photo */}
         <div className="relative">
-          <div className="w-full aspect-[3/4] bg-bg2 border border-bg3 rounded-[10px] flex items-center justify-center text-5xl">
-            📸
+          <div className="w-full aspect-[3/4] rounded-[10px] overflow-hidden bg-bg2 border border-bg3">
+            <Image
+              src="/profile.jpg"
+              alt="Salman Rahman — Senior Full-Stack Engineer"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 300px"
+              priority
+            />
           </div>
           <div className="absolute -bottom-3 -right-3 bg-ink text-bg text-[0.7rem] font-medium px-3.5 py-2 rounded-md tracking-[0.04em] whitespace-nowrap">
             📍 Dhaka · Remote-ready
@@ -56,12 +64,12 @@ export function About() {
 
         {/* Right — body */}
         <div>
-          <h3 className="font-serif text-[1.6rem] tracking-[-0.01em] mb-4">
+          <h3 className="font-serif text-[1.75rem] font-semibold tracking-[-0.01em] leading-[1.25] mb-4">
             I help international teams ship great products — fast and
             maintainably.
           </h3>
 
-          <p className="text-[0.88rem] text-ink2 leading-[1.8] mb-3.5">
+          <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-4">
             With <strong className="text-ink font-medium">9+ years</strong> of
             professional experience, I&apos;ve collaborated with companies in{" "}
             <strong className="text-ink font-medium">
@@ -71,7 +79,7 @@ export function About() {
             one, and mentoring junior engineers along the way.
           </p>
 
-          <p className="text-[0.88rem] text-ink2 leading-[1.8] mb-3.5">
+          <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-4">
             My foundation in{" "}
             <strong className="text-ink font-medium">statistics</strong> gives
             me an analytical edge: I measure what matters, communicate results
@@ -79,14 +87,14 @@ export function About() {
             architecture.
           </p>
 
-          <p className="text-[0.88rem] text-ink2 leading-[1.8] mb-3.5">
+          <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-4">
             Beyond frontend, I bring{" "}
             <strong className="text-ink font-medium">
               Node.js/Express backend fluency
             </strong>
             , basic{" "}
             <strong className="text-ink font-medium">DevOps knowledge</strong>{" "}
-            (Docker, CI/CD, Azure DevOps), and practical experience building{" "}
+            (Docker, CI/CD, AWS), and practical experience building{" "}
             <strong className="text-ink font-medium">
               AI-powered applications
             </strong>{" "}
@@ -94,7 +102,7 @@ export function About() {
             any engineering team.
           </p>
 
-          <p className="text-[0.88rem] text-ink2 leading-[1.8] mb-5">
+          <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-5">
             I&apos;m actively seeking an{" "}
             <strong className="text-ink font-medium">
               international remote role
