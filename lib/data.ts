@@ -86,26 +86,26 @@ export const targetCountries: TargetCountry[] = [
 export const statCards: StatCard[] = [
   {
     value: "40%",
-    label: "Latency reduction",
+    label: "Faster rendering",
     description:
-      "Form-builder platform, Norwegian public sector \u2014 React + Redux architecture",
+      "Cut form load times on a Norwegian government platform used by thousands",
   },
   {
     value: "50%",
-    label: "Faster onboarding",
+    label: "Faster dev onboarding",
     description:
-      "Scalable Redux patterns cut tech debt and ramp-up time significantly",
+      "New engineers shipped features in half the usual ramp-up time",
   },
   {
     value: "20%",
-    label: "Retention lift",
+    label: "Higher user retention",
     description:
-      "Swiss enterprise insurance portal \u2014 Angular, component library, Agile",
+      "Swiss insurance portal redesign kept more customers through the funnel",
   },
   {
     value: "25%",
-    label: "Bug reduction",
-    description: "WCAG-compliant React app, Redux state management overhaul",
+    label: "Fewer frontend bugs",
+    description: "State management overhaul on a WCAG-compliant React application",
   },
 ];
 
@@ -113,7 +113,7 @@ export const breadthItems: BreadthItem[] = [
   {
     label: "Frontend Core",
     description:
-      "React \u00B7 TypeScript \u00B7 Next.js \u00B7 Redux \u2014 9 years deep",
+      "React \u00B7 TypeScript \u00B7 Next.js \u00B7 Redux",
   },
   {
     label: "Backend Fluency",
@@ -139,10 +139,10 @@ export const experiences: Experience[] = [
     clientLabel: "Norwegian clients",
     role: "Senior Software Engineer",
     summary:
-      "Led frontend architecture for a complex form-builder platform serving Norwegian public sector \u2014 while also contributing to backend APIs and CI/CD pipelines.",
+      "Led frontend architecture for a government form-builder platform used across Norwegian municipalities \u2014 while also contributing to backend APIs and CI/CD pipelines.",
     bullets: [
       "<strong>Architected</strong> a dynamic form-builder platform for Norwegian public sector clients \u2014 reduced form rendering latency by <strong>40%</strong>",
-      "<strong>Introduced</strong> scalable Redux architecture and React best practices, cutting new feature onboarding time by <strong>50%</strong>",
+      "<strong>Introduced</strong> scalable Redux architecture and React best practices, cutting new-developer ramp-up time by <strong>50%</strong>",
       "<strong>Built data visualisation</strong> solutions using Svelte \u2014 interactive charts and analytics dashboards optimised for performance",
       "<strong>Developed RESTful APIs</strong> with Node.js and integrated backend services for seamless data flow",
       "Acted as <strong>technical advisor</strong> across multiple teams, guiding architecture decisions and enforcing code quality",
@@ -171,7 +171,6 @@ export const experiences: Experience[] = [
       "<strong>Developed</strong> a customer-facing insurance platform using Angular \u2014 improved user retention and conversion by <strong>20%</strong>",
       "<strong>Built a component library</strong> ensuring UI consistency across multiple modules and simplifying development",
       "<strong>Refactored</strong> the frontend\u2013backend communication layer, reducing data-fetching issues by <strong>35%</strong>",
-      "Delivered consistently under tight deadlines in a fast-paced <strong>Agile environment</strong>",
     ],
     tags: ["Angular", "TypeScript", "RxJS", "Material UI", "Agile"],
   },
@@ -183,7 +182,7 @@ export const experiences: Experience[] = [
     clientLabel: "US startup \u00B7 Remote",
     role: "Frontend Engineer",
     summary:
-      "First remote role \u2014 built a pixel-perfect, WCAG-compliant React application for a US AI startup, fully remote from Bangladesh.",
+      "Built a pixel-perfect, WCAG-compliant React application for a US AI startup \u2014 fully remote from Dhaka, three years before remote became mainstream.",
     bullets: [
       "<strong>Built</strong> responsive, pixel-perfect UI with React \u2014 full <strong>WCAG accessibility compliance</strong> and cross-device compatibility",
       "<strong>Streamlined</strong> UI state management with Redux \u2014 <strong>25% decrease</strong> in frontend bugs and smoother interactions",
@@ -220,14 +219,14 @@ export const skillCategories: SkillCategory[] = [
           { name: "Material UI", tier: "strong" },
           { name: "Ant Design", tier: "strong" },
           { name: "JavaScript (ES2023+)", tier: "strong" },
+          { name: "WCAG Accessibility", tier: "strong" },
+          { name: "Performance Optimisation", tier: "strong" },
+          { name: "Responsive Design", tier: "strong" },
         ],
       },
       {
         title: "Also know",
         tags: [
-          { name: "WCAG Accessibility", tier: "know" },
-          { name: "Performance Optimisation", tier: "know" },
-          { name: "Responsive Design", tier: "know" },
           { name: "HTML5 / CSS3", tier: "know" },
           { name: "Bootstrap", tier: "know" },
           { name: "Socket.IO", tier: "know" },
@@ -379,12 +378,12 @@ export const ctaCards: CtaCard[] = [
   {
     icon: "\u2708\uFE0F",
     label: "Visa sponsorship",
-    value: "",
+    value: "Open to relocation",
   },
   {
     icon: "\u{1F4C5}",
     label: "Availability",
-    value: "Available now \u00B7 Notice: 2 month",
+    value: "2 months\u2019 notice",
   },
   {
     icon: "\u{1F4BC}",
@@ -415,9 +414,8 @@ export const contactLinks: ContactLink[] = [
 ];
 
 export const openToItems: string[] = [
-  "Senior Frontend Engineer roles (React / TypeScript / Next.js)",
-  "Lead Frontend Engineer or Tech Lead positions",
-  "Remote roles with USD or EUR compensation",
-  "Companies working with European or global enterprise clients",
-  "Teams that value code quality, accessibility, and performance",
+  "Senior or Lead Frontend Engineer roles (React / TypeScript / Next.js)",
+  "Remote-first teams with USD or EUR compensation",
+  "Companies serving European or global enterprise clients",
+  "Teams that prioritize code quality, accessibility, and performance",
 ];

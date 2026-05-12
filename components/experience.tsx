@@ -42,11 +42,11 @@ export function Experience() {
         <span className="w-8 h-px bg-accent/40" />
       </div>
       <h2 className="font-serif text-[2.4rem] font-bold tracking-[-0.02em] text-ink mb-2 leading-[1.1]">
-        9 years, global clients.
+        Where I&apos;ve shipped.
       </h2>
       <p className="text-[0.95rem] text-ink3 leading-[1.75] max-w-[560px] mb-9">
         Norwegian public sector, Swiss enterprise, US startups — delivered
-        across time zones in remote-first, Agile environments.
+        across time zones in remote-first teams.
       </p>
 
       {/* Experience list */}

@@ -46,13 +46,12 @@ export function Contact() {
         {/* Left — contact info */}
         <div>
           <h3 className="font-serif text-[1.8rem] tracking-[-0.01em] mb-3.5">
-            Let&apos;s talk about your team&apos;s next hire.
+            Let&apos;s talk.
           </h3>
           <p className="text-[0.85rem] text-ink2 leading-[1.75] mb-5">
-            I&apos;m actively interviewing for international roles. If
-            you&apos;re a recruiter, tech lead, or hiring manager looking for a
-            senior frontend engineer with proven European client experience —
-            I&apos;d love to connect.
+            If you&apos;re a recruiter, tech lead, or hiring manager looking
+            for a senior frontend engineer with European enterprise experience
+            — I&apos;d love to hear from you.
           </p>
 
           <div className="flex flex-col gap-2">

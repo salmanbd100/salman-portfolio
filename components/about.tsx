@@ -66,25 +66,25 @@ export function About() {
         <div>
           <h3 className="font-serif text-[1.75rem] font-semibold tracking-[-0.01em] leading-[1.25] mb-4">
             I help international teams ship great products — fast and
-            maintainably.
+            sustainably.
           </h3>
 
           <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-4">
-            With <strong className="text-ink font-medium">9+ years</strong> of
-            professional experience, I&apos;ve collaborated with companies in{" "}
+            Over <strong className="text-ink font-medium">9+ years</strong>,
+            I&apos;ve collaborated with teams in{" "}
             <strong className="text-ink font-medium">
               Norway, Switzerland, and the US
             </strong>{" "}
-            — working across time zones, owning frontend architecture from day
-            one, and mentoring junior engineers along the way.
+            — owning frontend architecture, working across time zones, and
+            mentoring junior engineers along the way.
           </p>
 
           <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-4">
-            My foundation in{" "}
-            <strong className="text-ink font-medium">statistics</strong> gives
-            me an analytical edge: I measure what matters, communicate results
-            clearly, and make data-driven decisions on performance and
-            architecture.
+            My degree in{" "}
+            <strong className="text-ink font-medium">statistics</strong> trained
+            me to think in evidence, not assumptions — I profile before I
+            optimize, A/B test before I ship, and ground architecture decisions
+            in real performance data.
           </p>
 
           <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-4">
@@ -92,27 +92,23 @@ export function About() {
             <strong className="text-ink font-medium">
               Node.js/Express backend fluency
             </strong>
-            , basic{" "}
+            , working{" "}
             <strong className="text-ink font-medium">DevOps knowledge</strong>{" "}
-            (Docker, CI/CD, AWS), and practical experience building{" "}
+            (Docker, CI/CD, AWS), and hands-on experience building{" "}
             <strong className="text-ink font-medium">
               AI-powered applications
             </strong>{" "}
-            — giving me the full-picture context to collaborate effectively with
-            any engineering team.
+            — enough full-stack context to collaborate effectively with any
+            engineering team.
           </p>
 
           <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-5">
-            I&apos;m actively seeking an{" "}
+            Currently seeking{" "}
             <strong className="text-ink font-medium">
-              international remote role
+              remote or visa-sponsored roles
             </strong>{" "}
-            or{" "}
-            <strong className="text-ink font-medium">
-              visa-sponsored position
-            </strong>{" "}
-            in Europe, North America, or Australia. Passport ready. Open to any
-            timezone.
+            in Europe, North America, or Australia. Available with two
+            months&apos; notice.
           </p>
 
           {/* Breadth grid */}

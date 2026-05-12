@@ -24,9 +24,12 @@ export function Navigation() {
         "flex items-center justify-between"
       )}
     >
-      <span className="font-serif text-[1.05rem] text-ink tracking-[-0.01em]">
+      <a
+        href="#"
+        className="font-serif text-[1.1rem] font-semibold tracking-[-0.02em] text-ink no-underline"
+      >
         Salman Rahman
-      </span>
+      </a>
 
       {/* Desktop links */}
       <ul className="hidden md:flex items-center gap-6 list-none">
@@ -72,7 +75,7 @@ export function Navigation() {
           side="right"
           className="w-[280px] !bg-bg border-bg3 p-6"
         >
-          <SheetTitle className="font-serif text-[1.05rem] text-ink tracking-[-0.01em] mb-6">
+          <SheetTitle className="font-serif text-[1.1rem] font-semibold tracking-[-0.02em] text-ink mb-6">
             Salman Rahman
           </SheetTitle>
           <nav className="flex flex-col gap-1">

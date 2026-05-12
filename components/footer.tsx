@@ -2,7 +2,7 @@ export function Footer() {
   return (
     <footer className="border-t border-bg3 px-7 py-5 max-w-[1060px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
       <p className="text-[0.72rem] text-ink3">
-        &copy; 2025 Salman Rahman &middot; Senior Frontend Engineer &middot;
+        &copy; 2026 Salman Rahman &middot; Senior Frontend Engineer &middot;
         Dhaka, Bangladesh
       </p>
       <ul className="flex gap-4 list-none">

@@ -56,7 +56,7 @@ export function Hero() {
         {/* Eyebrow */}
         <div className="font-mono text-[0.68rem] tracking-[0.12em] uppercase text-ink3 mb-3 flex items-center gap-2">
           <span className="w-6 h-px bg-ink3" />
-          Senior Frontend Engineer &middot; 9 Years
+          Senior Frontend Engineer &middot; 9+ Years
         </div>
 
         {/* Headline */}
@@ -67,16 +67,16 @@ export function Hero() {
 
         {/* Subtitle */}
         <p className="text-[1rem] text-ink2 leading-[1.8] max-w-[500px] mb-6">
-          From Norwegian public sector platforms to Swiss enterprise systems,
-          I&apos;ve spent 9 years turning{" "}
+          9+ years turning{" "}
           <strong className="text-ink font-medium">complex requirements</strong>{" "}
           into{" "}
           <strong className="text-ink font-medium">
             products people actually use
           </strong>{" "}
-          &mdash; React, TypeScript, Next.js at the core, with{" "}
-          <strong className="text-ink font-medium">full-stack depth</strong> to
-          own the whole problem.
+          &mdash; for Norwegian government agencies, Swiss insurers, and US
+          startups. React, TypeScript, and Next.js at the core, with{" "}
+          <strong className="text-ink font-medium">full-stack reach</strong>{" "}
+          when the problem demands it.
         </p>
 
         {/* Target countries */}

@@ -21,7 +21,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Salman Rahman — Senior Frontend Engineer",
   description:
-    "Senior Frontend Engineer with 9+ years of experience building production-grade React applications for global clients. Specializing in TypeScript, Next.js, and scalable frontend architecture.",
+    "Senior Frontend Engineer with 9+ years building production-grade React applications for European and US clients. TypeScript, Next.js, and scalable frontend architecture. Based in Dhaka, open to remote and relocation.",
   keywords: [
     "Senior Frontend Engineer",
     "React Developer",

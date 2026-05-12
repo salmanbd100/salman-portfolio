@@ -47,9 +47,8 @@ export function CtaBand() {
             international opportunity.
           </h2>
           <p className="text-[0.85rem] text-[rgba(246,245,241,0.5)] leading-[1.7] max-w-[500px]">
-            I&apos;m actively looking for Senior Frontend roles at companies
-            that value engineering craft, remote collaboration, and long-term
-            impact. Visa sponsorship welcome. Remote (any timezone) preferred.
+            Looking for Senior Frontend roles at companies that value craft,
+            collaboration, and long-term thinking. Visa sponsorship welcome.
           </p>
         </div>
 
