@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { statCards, targetCountries } from "@/lib/data";
+import { statCards } from "@/lib/data";
 
 export function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -78,18 +78,6 @@ export function Hero() {
           <strong className="text-ink font-medium">full-stack reach</strong>{" "}
           when the problem demands it.
         </p>
-
-        {/* Target countries */}
-        {/* <div className="flex flex-wrap gap-1.5 mb-7">
-          {targetCountries.map((country) => (
-            <span
-              key={country.name}
-              className="text-[0.68rem] px-2.5 py-1 rounded-full bg-bg2 text-ink2 border border-bg3 tracking-[0.02em]"
-            >
-              {country.flag} {country.name}
-            </span>
-          ))}
-        </div> */}
 
         {/* CTA buttons */}
         <div className="flex gap-2.5">

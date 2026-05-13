@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Salman Rahman — Portfolio
 
-## Getting Started
+Senior Frontend Engineer with 9+ years building high-performance, accessible web applications for clients across Norway, Switzerland, and the US. Based in Dhaka, Bangladesh. Open to remote roles with visa sponsorship.
 
-First, run the development server:
+---
+
+## About Me
+
+I specialize in React, TypeScript, and Next.js, with a strong background in frontend architecture, scalable state management, and cross-functional team leadership. I've worked on everything from government form-builder platforms used across Norwegian municipalities to enterprise insurance portals and AI-powered startup products.
+
+- **Current role:** Senior Software Engineer at Cefalo (Nov 2022 – Present)
+- **Experience:** 9+ years
+- **Education:** Statistics — evidence-based thinking, A/B testing, performance analysis
+- **Location:** Dhaka, Bangladesh (remote-ready)
+
+---
+
+## Tech Stack
+
+**Frontend**
+React · TypeScript · Next.js · Redux · React Query · Angular · Svelte · TailwindCSS · Framer Motion · SCSS · WCAG Accessibility
+
+**Backend**
+Node.js · Express · NestJS · REST API · GraphQL
+
+**Database**
+PostgreSQL · Prisma · MongoDB
+
+**Infrastructure & Tooling**
+AWS · Docker · GitHub Actions · CI/CD · Vite · Jest · Storybook · Figma
+
+**AI**
+Claude / GPT API integration · Prompt engineering · Cursor · Claude Code
+
+---
+
+## Career Highlights
+
+| Impact | Context |
+|---|---|
+| 40% faster form rendering | Architected dynamic form-builder for Norwegian government |
+| 50% faster developer onboarding | Introduced scalable Redux patterns and React best practices |
+| 20% higher user retention | Rebuilt customer-facing insurance portal (Swiss enterprise) |
+| 25% fewer frontend bugs | Overhauled state management at US AI startup |
+
+---
+
+## Work History
+
+**Cefalo** — Senior Software Engineer *(Nov 2022 – Present)*
+Led frontend architecture for a government form-builder platform serving Norwegian municipalities. Built data visualization dashboards in Svelte, developed Node.js APIs, and acted as technical advisor across teams.
+`React · Redux · TypeScript · Next.js · Svelte · Node.js · AWS`
+
+**SELISE** — Software Engineer *(Sep 2020 – Oct 2022)*
+Built and scaled a customer-facing insurance portal for a Swiss enterprise client. Developed a shared component library and refactored the frontend-backend communication layer, reducing data-fetching issues by 35%.
+`Angular · TypeScript · RxJS · Material UI`
+
+**Kinship AI** — Frontend Engineer *(Dec 2017 – Aug 2020)*
+Delivered pixel-perfect, WCAG-compliant React application for a US AI startup. Worked fully remote with US-based designers and engineers across timezones.
+`React · Redux · JavaScript · SCSS`
+
+---
+
+## This Portfolio
+
+Built with Next.js and deployed on Vercel. Showcases selected projects, skills, and contact info.
+
+**Running locally:**
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contact
 
-## Learn More
+- Email: salman.bd100@gmail.com
+- LinkedIn: [linkedin.com/in/salmanbd](https://linkedin.com/in/salmanbd)
+- GitHub: [github.com/salmanbd100](https://github.com/salmanbd100)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open to **Senior or Lead Frontend Engineer** roles — remote-first, USD/EUR compensation, preferably with teams in Germany, Netherlands, Sweden, Canada, Australia, or fully remote.

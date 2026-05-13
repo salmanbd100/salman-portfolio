@@ -6,11 +6,6 @@ export interface StatCard {
   description: string;
 }
 
-export interface TargetCountry {
-  flag: string;
-  name: string;
-}
-
 export interface BreadthItem {
   label: string;
   description: string;
@@ -73,15 +68,6 @@ export const navLinks = [
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
 ] as const;
-
-export const targetCountries: TargetCountry[] = [
-  { flag: "\u{1F1E9}\u{1F1EA}", name: "Germany" },
-  { flag: "\u{1F1F3}\u{1F1F1}", name: "Netherlands" },
-  { flag: "\u{1F1F8}\u{1F1EA}", name: "Sweden" },
-  { flag: "\u{1F1E8}\u{1F1E6}", name: "Canada" },
-  { flag: "\u{1F1E6}\u{1F1FA}", name: "Australia" },
-  { flag: "\u{1F30D}", name: "Remote \u00B7 USD/EUR" },
-];
 
 export const statCards: StatCard[] = [
   {
