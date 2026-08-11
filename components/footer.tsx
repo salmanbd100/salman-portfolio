@@ -1,3 +1,8 @@
+import { TrackedLink } from "@/components/tracked-link";
+
+const linkClass =
+  "text-[0.72rem] text-ink3 no-underline transition-colors duration-150 hover:text-ink";
+
 export function Footer() {
   return (
     <footer className="border-t border-bg3 px-7 py-5 max-w-[1060px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -7,41 +12,49 @@ export function Footer() {
       </p>
       <ul className="flex gap-4 list-none">
         <li>
-          <a
+          <TrackedLink
             href="mailto:salman.bd100@gmail.com"
-            className="text-[0.72rem] text-ink3 no-underline transition-colors duration-150 hover:text-ink"
+            event="contact_click"
+            eventProps={{ channel: "email", location: "footer" }}
+            className={linkClass}
           >
             Email
-          </a>
+          </TrackedLink>
         </li>
         <li>
-          <a
+          <TrackedLink
             href="https://linkedin.com/in/salmanbd"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[0.72rem] text-ink3 no-underline transition-colors duration-150 hover:text-ink"
+            event="contact_click"
+            eventProps={{ channel: "linkedin", location: "footer" }}
+            className={linkClass}
           >
             LinkedIn
-          </a>
+          </TrackedLink>
         </li>
         <li>
-          <a
+          <TrackedLink
             href="https://github.com/salmanbd100"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[0.72rem] text-ink3 no-underline transition-colors duration-150 hover:text-ink"
+            event="contact_click"
+            eventProps={{ channel: "github", location: "footer" }}
+            className={linkClass}
           >
             GitHub
-          </a>
+          </TrackedLink>
         </li>
         <li>
-          <a
+          <TrackedLink
             href="/Salman_Rahman_Resume.pdf"
             download
-            className="text-[0.72rem] text-ink3 no-underline transition-colors duration-150 hover:text-ink"
+            event="cv_download"
+            eventProps={{ location: "footer" }}
+            className={linkClass}
           >
             Resume PDF
-          </a>
+          </TrackedLink>
         </li>
       </ul>
     </footer>

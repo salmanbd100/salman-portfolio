@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { statCards } from "@/lib/data";
+import { TrackedLink } from "@/components/tracked-link";
 
 export function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -94,9 +95,11 @@ export function Hero() {
           >
             Get in touch
           </a>
-          <a
+          <TrackedLink
             href="/Salman_Rahman_Resume.pdf"
             download
+            event="cv_download"
+            eventProps={{ location: "hero" }}
             className={cn(
               "border-[1.5px] border-bg3 text-ink2",
               "px-[22px] py-2.5 rounded-md",
@@ -106,7 +109,7 @@ export function Hero() {
             )}
           >
             Download CV &darr;
-          </a>
+          </TrackedLink>
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 import { Sparkles, Loader2 } from "lucide-react";
 import {
   Sheet,
@@ -16,7 +17,11 @@ export function ChatWidget() {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <Sheet>
+    <Sheet
+      onOpenChange={(open) => {
+        if (open) track("chat_open");
+      }}
+    >
       {/* Floating CTA bubble */}
       <SheetTrigger
         className={cn(

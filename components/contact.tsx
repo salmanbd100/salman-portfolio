@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { contactLinks, openToItems } from "@/lib/data";
+import { TrackedLink } from "@/components/tracked-link";
 
 export function Contact() {
   const [isVisible, setIsVisible] = useState(false);
@@ -56,7 +57,7 @@ export function Contact() {
 
           <div className="flex flex-col gap-2">
             {contactLinks.map((link) => (
-              <a
+              <TrackedLink
                 key={link.label}
                 href={link.href}
                 target={link.href.startsWith("http") ? "_blank" : undefined}
@@ -65,6 +66,11 @@ export function Contact() {
                     ? "noopener noreferrer"
                     : undefined
                 }
+                event="contact_click"
+                eventProps={{
+                  channel: link.label.toLowerCase(),
+                  location: "contact",
+                }}
                 className={cn(
                   "flex items-center gap-3.5 no-underline",
                   "text-ink2 px-4 py-3",
@@ -82,7 +88,7 @@ export function Contact() {
                   </div>
                   <div className="text-[0.82rem] font-medium">{link.value}</div>
                 </div>
-              </a>
+              </TrackedLink>
             ))}
           </div>
         </div>
