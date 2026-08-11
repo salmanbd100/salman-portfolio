@@ -76,6 +76,12 @@
   }
 }
 
+/* body is `flex flex-col`, which makes every direct child a flex item with the
+   default `min-width: auto` — so a child grows to its content's min-content
+   width instead of the container's. A code block with long unwrapped lines
+   would widen the whole page rather than scrolling inside its own
+   overflow-x container, giving the document a horizontal scrollbar on mobile.
+   Allowing these children to shrink is what lets the inner scroll engage. */
 /* Scroll reveal animation utility */
 @layer utilities {
   .reveal {
@@ -119,4 +125,91 @@
 
 .animate-fadeIn {
   animation: fadeIn 0.2s ease;
+}
+
+/* ─── Blog code blocks (Shiki output) ─────────────────────────────────────
+   Shiki emits <pre class="shiki"><code><span class="line">…</span></code>.
+   Styling lives here because the markup is injected as HTML rather than
+   composed from JSX. github-dark-dimmed palette values are inlined so the
+   figure chrome in code-block.tsx and the highlighted rows agree. */
+
+.code-scroll {
+  overflow-x: auto;
+}
+
+.code-scroll .shiki {
+  margin: 0;
+  padding: 0.9rem 0;
+  /* The figure already paints the background, so the theme's own is dropped —
+     otherwise it would square off the figure's rounded corners. */
+  background: transparent !important;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
+.code-scroll .shiki code {
+  /* Grid makes each .line a full-width row, so line highlights span the whole
+     block instead of stopping at the end of the text. */
+  display: grid;
+  font-family: var(--font-mono);
+}
+
+.code-scroll .shiki .line {
+  position: relative;
+  padding-inline: 1rem;
+  border-left: 2px solid transparent;
+}
+
+.code-scroll .shiki .line.highlighted {
+  background: rgba(83, 155, 245, 0.13);
+  border-left-color: #539bf5;
+}
+
+.code-scroll .shiki .line.diff.add {
+  background: rgba(87, 171, 90, 0.15);
+  border-left-color: #57ab5a;
+}
+
+.code-scroll .shiki .line.diff.remove {
+  background: rgba(229, 83, 75, 0.15);
+  border-left-color: #e5534b;
+  opacity: 0.7;
+}
+
+/* Diff markers only when line numbers aren't using ::before. */
+.code-scroll:not(.code-line-numbers) .shiki .line.diff::before {
+  position: absolute;
+  margin-left: -0.75rem;
+  color: #768390;
+}
+.code-scroll:not(.code-line-numbers) .shiki .line.diff.add::before {
+  content: "+";
+}
+.code-scroll:not(.code-line-numbers) .shiki .line.diff.remove::before {
+  content: "−";
+}
+
+/* Focus notation: de-emphasize everything else until hover. */
+.code-scroll .shiki.has-focused .line:not(.focused) {
+  opacity: 0.45;
+  filter: blur(1.4px);
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+.code-scroll .shiki.has-focused:hover .line:not(.focused) {
+  opacity: 1;
+  filter: none;
+}
+
+.code-line-numbers .shiki code {
+  counter-reset: shiki-line;
+}
+.code-line-numbers .shiki .line::before {
+  counter-increment: shiki-line;
+  content: counter(shiki-line);
+  display: inline-block;
+  width: 1.4rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: #545d68;
+  user-select: none;
 }

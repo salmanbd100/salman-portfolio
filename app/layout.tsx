@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ChatWidget } from "@/components/chat-widget";
+import { AUTHOR, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -21,7 +22,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.salmanrahman.com"),
+  metadataBase: new URL(SITE_URL),
   title: "Salman Rahman — Senior Frontend Engineer",
   description:
     "Senior Frontend Engineer with 9+ years building production-grade React applications for European and US clients. TypeScript, Next.js, and scalable frontend architecture. Based in Dhaka, open to remote and relocation.",
@@ -34,14 +35,14 @@ export const metadata: Metadata = {
     "Remote Developer",
     "Full Stack Engineer",
   ],
-  authors: [{ name: "Salman Rahman", url: "https://www.salmanrahman.com" }],
-  creator: "Salman Rahman",
+  authors: [{ name: AUTHOR.name, url: AUTHOR.url }],
+  creator: AUTHOR.name,
   openGraph: {
     title: "Salman Rahman — Senior Frontend Engineer",
     description:
       "9+ years building production-grade React applications for Norwegian, Swiss & US teams. React, TypeScript, Next.js.",
-    url: "https://www.salmanrahman.com",
-    siteName: "Salman Rahman",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     locale: "en_US",
     type: "website",
     images: [
@@ -65,7 +66,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://www.salmanrahman.com",
+    canonical: SITE_URL,
   },
 };
 

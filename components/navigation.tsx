@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/lib/data";
@@ -24,28 +25,28 @@ export function Navigation() {
         "flex items-center justify-between"
       )}
     >
-      <a
-        href="#"
+      <Link
+        href="/"
         className="font-serif text-[1.1rem] font-semibold tracking-[-0.02em] text-ink no-underline"
       >
         Salman Rahman
-      </a>
+      </Link>
 
       {/* Desktop links */}
       <ul className="hidden md:flex items-center gap-6 list-none">
         {navLinks.map((link) => (
           <li key={link.href}>
-            <a
+            <Link
               href={link.href}
               className="text-[0.72rem] font-medium tracking-[0.08em] uppercase text-ink3 no-underline transition-colors duration-150 hover:text-accent"
             >
               {link.label}
-            </a>
+            </Link>
           </li>
         ))}
         <li>
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             className={cn(
               "bg-accent text-white",
               "px-3.5 py-1.5 rounded-md",
@@ -55,7 +56,7 @@ export function Navigation() {
             )}
           >
             Hire Me
-          </a>
+          </Link>
         </li>
       </ul>
 
@@ -80,17 +81,17 @@ export function Navigation() {
           </SheetTitle>
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="text-[0.78rem] font-medium tracking-[0.06em] uppercase text-ink2 no-underline py-3 px-3 rounded-md transition-colors hover:bg-bg2 hover:text-accent"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               onClick={() => setOpen(false)}
               className={cn(
                 "mt-4 bg-accent text-white text-center",
@@ -101,7 +102,7 @@ export function Navigation() {
               )}
             >
               Hire Me
-            </a>
+            </Link>
           </nav>
         </SheetContent>
       </Sheet>

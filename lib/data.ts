@@ -63,10 +63,13 @@ export interface CtaCard {
 
 // ─── Data ───
 
+// Root-relative, not bare fragments: from a /blog/* URL a bare "#about"
+// resolves against the current path and breaks.
 export const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
+  { label: "About", href: "/#about" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Blog", href: "/blog" },
 ] as const;
 
 export const statCards: StatCard[] = [

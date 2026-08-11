@@ -1,0 +1,40 @@
+export const meta = {
+  title: "Notes on Static Generation in Next.js 16",
+  description:
+    "A running list of things that quietly opt a route out of static generation, and how to catch them by reading the build output.",
+  date: "2026-08-10",
+  tags: ["nextjs", "performance"],
+  draft: true,
+};
+
+This is a draft — it exists to verify that draft gating works. It renders in
+development and on preview deployments, and is absent from the production index,
+sitemap, and RSS feed.
+
+## Read The Build Output
+
+The route table at the end of `next build` is the fastest signal:
+
+```bash showLineNumbers
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+```
+
+Anything marked `ƒ` that you expected to be static is worth investigating.
+
+## The Edge Runtime Surprise
+
+Setting `runtime = "edge"` on a metadata image route disables static generation
+for it:
+
+```tsx title="app/opengraph-image.tsx"
+export const runtime = "edge"; // [!code --]
+```
+
+The build warns about this, but it's easy to scroll past.
+
+## Reading Request State
+
+Calling `cookies()`, `headers()`, or reading `searchParams` opts a route into
+dynamic rendering, which is correct behaviour — just make sure it's deliberate.

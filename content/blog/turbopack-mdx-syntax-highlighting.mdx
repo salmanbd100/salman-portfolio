@@ -1,0 +1,160 @@
+export const meta = {
+  title: "Why Turbopack Breaks MDX Syntax Highlighting",
+  description:
+    "Turbopack can't pass JavaScript functions to Rust, which quietly rules out rehype-pretty-code. The fix produces better output than the plugin did.",
+  date: "2026-08-11",
+  tags: ["nextjs", "mdx", "turbopack"],
+  draft: false,
+};
+
+Every guide to adding a code-highlighted MDX blog to Next.js tells you to
+install `rehype-pretty-code` and register it in your MDX config. In Next.js 16,
+that advice quietly stops working — and the reason is worth understanding,
+because it changes where highlighting should live.
+
+## The Constraint
+
+Next.js 16 makes Turbopack the default bundler. The Next MDX guide states it
+plainly:
+
+> remark and rehype plugins without serializable options cannot be used yet with
+> Turbopack, because JavaScript functions can't be passed to Rust.
+
+Plugin configuration crosses from JavaScript into a Rust bundler, so every
+option has to survive serialization. Strings and numbers are fine. Functions are
+not.
+
+Now look at how you actually configure `rehype-pretty-code` or
+`@shikijs/rehype`:
+
+```ts title="next.config.ts (does not work)" {4-7}
+const withMDX = createMDX({
+  options: {
+    rehypePlugins: [
+      [rehypePrettyCode, {
+        theme: "github-dark-dimmed",
+        transformers: [transformerNotationDiff()],
+      }],
+    ],
+  },
+});
+```
+
+`transformers` is an array of functions. So is the plugin reference itself.
+Neither can make the trip.
+
+<Callout type="warn">
+  This fails at the loader boundary, not at type-check time. You get a runtime
+  module error during compilation rather than a helpful config warning, which
+  makes it easy to misread as a broken install.
+</Callout>
+
+## Plugins That Still Work
+
+Turbopack accepts plugins named as **strings**, resolved at load time, with
+serializable options only:
+
+```ts title="next.config.ts"
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: ["remark-gfm"],
+    rehypePlugins: ["rehype-slug"],
+  },
+});
+```
+
+That covers plugins configured entirely by data. It does not cover anything
+whose whole purpose is to accept your callbacks.
+
+## Highlight In A Server Component Instead
+
+The move that fixes this is to stop treating highlighting as a build-pipeline
+concern. Override `pre` in `mdx-components.tsx` and call Shiki directly:
+
+```tsx title="components/blog/code-block.tsx" {8-16}
+import { transformerNotationDiff } from "@shikijs/transformers";
+import { codeToHtml } from "shiki";
+
+export async function CodeBlock({ code, lang, meta }: CodeBlockProps) {
+  const html = await codeToHtml(code, {
+    lang,
+    theme: "github-dark-dimmed",
+    meta: { __raw: meta },
+    transformers: [transformerNotationDiff()],
+  });
+
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+}
+```
+
+Shiki is now ordinary application code. Nothing crosses into Rust, so the
+serialization limit simply doesn't apply, and **every** transformer is available
+again.
+
+The part that surprised me: this is not a workaround with a cost. It is better
+on three axes.
+
+| | rehype plugin | Server Component |
+| --- | --- | --- |
+| Transformers | Blocked by Turbopack | All available |
+| Theme changes | Edit `next.config.ts`, restart | Edit a component |
+| Client JS shipped | None | None |
+| Runs at | Build | Build |
+
+Because statically generated pages execute their Server Components at build
+time, the highlighter never reaches the browser either way. You give up nothing.
+
+## One Gotcha: Fence Meta Disappears
+
+There is a catch that costs an hour if you hit it blind. Write a fence with
+metadata:
+
+````mdx
+```ts title="example.ts" {2}
+````
+
+...and that metadata never arrives at your component. The reason is in
+`mdast-util-to-hast`:
+
+```js title="mdast-util-to-hast/lib/handlers/code.js" {2}
+if (node.meta) {
+  result.data = {meta: node.meta}
+}
+```
+
+It lands on hast `data`, not `properties` — and only `properties` becomes JSX
+props. Copying it across takes a nine-line local plugin:
+
+```js title="lib/blog/rehype-code-meta.mjs"
+export default function rehypeCodeMeta() {
+  return (tree) => walk(tree);
+}
+
+function walk(node) {
+  if (node?.type === "element" && node.tagName === "code" && node.data?.meta) {
+    node.properties = { ...node.properties, meta: node.data.meta };
+  }
+  node?.children?.forEach(walk);
+}
+```
+
+Registering a local plugin has its own wrinkle. `@next/mdx` resolves plugin
+strings with `require.resolve(spec, { paths: [projectRoot] })`, and Node ignores
+`paths` for relative specifiers — so `"./lib/blog/rehype-code-meta.mjs"`
+resolves against `@next/mdx`'s own directory and throws. Pass an absolute path:
+
+```ts title="next.config.ts"
+rehypePlugins: [
+  "rehype-slug",
+  path.join(process.cwd(), "lib/blog/rehype-code-meta.mjs"),
+],
+```
+
+Still a plain string, so Turbopack is satisfied.
+
+## Takeaway
+
+When a bundler constraint blocks the conventional plugin, the question to ask
+isn't "which plugin works around this" — it's whether the work belongs in the
+build pipeline at all. Highlighting is rendering. In an app where rendering
+already happens on the server at build time, that's where it should live.
