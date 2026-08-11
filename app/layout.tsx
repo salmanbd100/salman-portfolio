@@ -32,11 +32,11 @@ const newsreader = Newsreader({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Salman Rahman — Senior Frontend Engineer",
+  title: "Salman Rahman — Senior Software Engineer",
   description:
-    "Senior Frontend Engineer with 9+ years building production-grade React applications for European and US clients. TypeScript, Next.js, and scalable frontend architecture. Based in Dhaka, open to remote and relocation.",
+    "Senior Software Engineer with 9+ years building production-grade React applications for European and US clients. TypeScript, Next.js, and scalable frontend architecture. Based in Dhaka, open to remote and relocation.",
   keywords: [
-    "Senior Frontend Engineer",
+    "Senior Software Engineer",
     "React Developer",
     "TypeScript",
     "Next.js",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   authors: [{ name: AUTHOR.name, url: AUTHOR.url }],
   creator: AUTHOR.name,
   openGraph: {
-    title: "Salman Rahman — Senior Frontend Engineer",
+    title: "Salman Rahman — Senior Software Engineer",
     description:
       "9+ years building production-grade React applications for Norwegian, Swiss & US teams. React, TypeScript, Next.js.",
     url: SITE_URL,
@@ -60,13 +60,13 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: "image/png",
-        alt: "Salman Rahman — Senior Frontend Engineer",
+        alt: "Salman Rahman — Senior Software Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Salman Rahman — Senior Frontend Engineer",
+    title: "Salman Rahman — Senior Software Engineer",
     description:
       "9+ years building production-grade React applications for Norwegian, Swiss & US teams.",
   },

@@ -50,7 +50,7 @@ export function About() {
           <div className="relative w-full aspect-[3/4] rounded-[10px] overflow-hidden bg-bg2 border border-bg3">
             <Image
               src="/profile.jpg"
-              alt="Salman Rahman — Senior Frontend Engineer"
+              alt="Salman Rahman — Senior Software Engineer"
               fill
               className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, 300px"

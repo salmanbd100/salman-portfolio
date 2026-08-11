@@ -17,7 +17,7 @@ import { AUTHOR, SITE_NAME } from "@/lib/site";
 // overrides generateMetadata, so a per-post alt would mean generateImageMetadata
 // and a changed image URL shape. Not worth it for an attribute most social
 // platforms ignore — the card itself carries the title.
-export const alt = "Article by Salman Rahman, Senior Frontend Engineer";
+export const alt = "Article by Salman Rahman, Senior Software Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

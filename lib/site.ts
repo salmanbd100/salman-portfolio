@@ -12,7 +12,7 @@ export const SITE_NAME = "Salman Rahman";
 
 export const AUTHOR = {
   name: "Salman Rahman",
-  role: "Senior Frontend Engineer",
+  role: "Senior Software Engineer",
   url: SITE_URL,
   /** Small avatar used in generated OG cards. NOT public/profile.jpg — that
    *  one is 3.1MB and gets base64-inlined per card. See scripts note in README. */

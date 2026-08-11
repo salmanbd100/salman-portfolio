@@ -251,7 +251,7 @@ Card layout:
 |  Wrapping To Two Lines If Needed           stepped   |
 |                                            by length |
 |  (o)  Salman Rahman            salmanrahman.com      |
-|  avatar  Senior Frontend Engineer                     |
+|  avatar  Senior Software Engineer                     |
 +------------------------------------------------------+
 ```
 

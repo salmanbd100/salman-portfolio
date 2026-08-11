@@ -1,6 +1,6 @@
 # Salman Rahman — Portfolio
 
-Senior Frontend Engineer with 9+ years building high-performance, accessible web applications for clients across Norway, Switzerland, and the US. Based in Dhaka, Bangladesh. Open to remote roles with visa sponsorship.
+Senior Software Engineer with 9+ years building high-performance, accessible web applications for clients across Norway, Switzerland, and the US. Based in Dhaka, Bangladesh. Open to remote roles with visa sponsorship.
 
 ---
 
