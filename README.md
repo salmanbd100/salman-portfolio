@@ -59,6 +59,10 @@ Built and scaled a customer-facing insurance portal for a Swiss enterprise clien
 Delivered pixel-perfect, WCAG-compliant React application for a US AI startup. Worked fully remote with US-based designers and engineers across timezones.
 `React · Redux · JavaScript · SCSS`
 
+**Spondon** — Frontend Web Developer *(Sep 2016 – Nov 2017)*
+Built responsive web templates and marketing sites for international clients. Delivered 15+ HTML5 templates across education, SaaS, and hospitality verticals with a 100% approval rate on ThemeForest.
+`HTML5 · CSS3 · Bootstrap · jQuery · SCSS`
+
 ---
 
 ## This Portfolio

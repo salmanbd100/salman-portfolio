@@ -179,6 +179,22 @@ export const experiences: Experience[] = [
     ],
     tags: ["React", "Redux", "JavaScript", "SCSS", "WCAG"],
   },
+  {
+    company: "SPONDON",
+    period: "Sep 2016 \u2013 Nov 2017",
+    location: "Dhaka, Bangladesh",
+    clientFlag: "\u{1F30D}",
+    clientLabel: "International clients",
+    role: "Frontend Web Developer",
+    summary:
+      "Frontend developer focused on responsive web templates and marketing sites for international clients.",
+    bullets: [
+      "<strong>Delivered 15+ responsive HTML5 templates</strong> across education, SaaS, and hospitality verticals \u2014 <strong>100% approval rate</strong> on ThemeForest",
+      "<strong>Transformed</strong> PSD designs into responsive interfaces using HTML5, CSS3, Bootstrap, and jQuery",
+      "<strong>Applied W3C standards</strong> and semantic HTML to ensure cross-browser compatibility and SEO readiness",
+    ],
+    tags: ["HTML5", "CSS3", "Bootstrap", "jQuery", "SCSS", "JavaScript"],
+  },
 ];
 
 export const skillCategories: SkillCategory[] = [
