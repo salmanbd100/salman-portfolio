@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono, Newsreader, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ChatWidget } from "@/components/chat-widget";
 import { AUTHOR, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -19,6 +19,15 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-serif",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+// Blog headings only — an editorial serif built for screen reading, so a post
+// announces itself as something to read rather than as another portfolio panel.
+// No `weight` list because this is a variable font: the whole 200–800 range
+// arrives in one file, which costs less than the four static cuts above.
+const newsreader = Newsreader({
+  variable: "--font-editorial",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -78,7 +87,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${newsreader.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {children}

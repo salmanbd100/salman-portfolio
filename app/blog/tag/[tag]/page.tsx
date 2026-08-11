@@ -47,8 +47,9 @@ export default async function TagPage({ params }: Params) {
 
   return (
     // w-full min-w-0: body is `flex flex-col`, so main must not be sized by its
-    // content. See the note in app/blog/[slug]/page.tsx.
-    <main className="mx-auto w-full min-w-0 max-w-[720px] px-7 py-14">
+    // content. See the note in app/blog/[slug]/page.tsx. The 990px cap and 56ch
+    // measure match the index and the posts so the column never shifts.
+    <main className="mx-auto w-full min-w-0 max-w-[990px] px-7 py-14">
       <JsonLd
         data={breadcrumbJsonLd([
           { name: BLOG.title, path: "/blog" },
@@ -64,19 +65,21 @@ export default async function TagPage({ params }: Params) {
         All posts
       </Link>
 
-      <h1 className="mt-7 font-serif text-[1.7rem] font-semibold tracking-[-0.03em] text-ink">
-        <span className="text-ink3">#</span>
-        {tag}
-      </h1>
+      <div className="max-w-[56ch] text-prose md:text-prose-lg">
+        <h1 className="mt-7 font-editorial text-[2rem] font-semibold tracking-[-0.015em] text-ink md:text-[2.25rem]">
+          <span className="text-ink3">#</span>
+          {tag}
+        </h1>
 
-      <p className="mt-2 text-[0.9rem] text-ink3">
-        {posts.length} {posts.length === 1 ? "post" : "posts"}
-      </p>
+        <p className="mt-2 text-prose text-ink3">
+          {posts.length} {posts.length === 1 ? "post" : "posts"}
+        </p>
 
-      <div className="mt-10">
-        {posts.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
+        <div className="mt-10">
+          {posts.map((post) => (
+            <PostCard key={post.slug} post={post} />
+          ))}
+        </div>
       </div>
     </main>
   );

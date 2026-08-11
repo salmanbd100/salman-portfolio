@@ -10,6 +10,22 @@
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
   --font-heading: var(--font-serif);
+  /* Newsreader. Blog headings only — the portfolio keeps Space Grotesk, which
+     is what makes the two sections read as different kinds of page. */
+  --font-editorial: var(--font-editorial);
+
+  /* Long-form reading scale, for the blog only.
+     The rest of the site is UI — dense, scanned, and correct at the 0.9375rem
+     body size. Prose is read for minutes at a time and needs more. Applied as
+     `text-prose md:text-prose-lg` so a phone gets 17px and a desktop 19px;
+     `prose-sm` is the secondary tier (card blurbs, callouts, captions).
+     Line heights ride along with each token, so they cannot drift apart. */
+  --text-prose-sm: 1rem;
+  --text-prose-sm--line-height: 1.7;
+  --text-prose: 1.0625rem;
+  --text-prose--line-height: 1.75;
+  --text-prose-lg: 1.1875rem;
+  --text-prose-lg--line-height: 1.75;
 
   /* Portfolio design tokens — clean slate + indigo */
   --color-ink: #0f172a;
@@ -19,6 +35,9 @@
   --color-bg: #ffffff;
   --color-bg2: #f8fafc;
   --color-bg3: #f1f5f9;
+  /* One step darker than bg3 — a quote or aside needs to read as a distinct
+     surface against white, which #f1f5f9 does not at prose sizes. */
+  --color-bg4: #e6ebf2;
 
   --color-accent: #2e7d96;
   --color-accent2: #3a98b4;
@@ -143,8 +162,16 @@
   /* The figure already paints the background, so the theme's own is dropped —
      otherwise it would square off the figure's rounded corners. */
   background: transparent !important;
+  /* Tracks the prose scale: 13px code beside 19px prose reads as a footnote.
+     Stays below the prose size so the block still looks like code. */
   font-size: 0.8125rem;
-  line-height: 1.7;
+  line-height: 1.75;
+}
+
+@media (width >= 48rem) {
+  .code-scroll .shiki {
+    font-size: 0.9rem;
+  }
 }
 
 .code-scroll .shiki code {

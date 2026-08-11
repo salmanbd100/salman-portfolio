@@ -42,7 +42,11 @@ export default async function PostPage({ params }: Params) {
     // so main is a flex item that would otherwise size to its content's
     // min-content width. A code block with long unwrapped lines would then
     // widen the whole page instead of scrolling inside its own container.
-    <main className="mx-auto w-full min-w-0 max-w-[1060px] px-7 py-12">
+    //
+    // The 990px cap is derived, not picked: it is the article measure below
+    // (56ch) plus the contents column and the gap, so the two-column layout
+    // leaves no dead space between the prose and the contents list.
+    <main className="mx-auto w-full min-w-0 max-w-[990px] px-7 py-12">
       <JsonLd data={blogPostingJsonLd(post)} />
       <JsonLd
         data={breadcrumbJsonLd([
@@ -60,9 +64,16 @@ export default async function PostPage({ params }: Params) {
       </Link>
 
       <div className="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_180px] lg:gap-12">
-        <article className="min-w-0">
-          <header className="border-b border-bg3 pb-7">
-            <div className="mb-3 flex flex-wrap items-center gap-2.5 font-mono text-[0.65rem] tracking-[0.1em] uppercase text-ink3">
+        {/* The measure lives on <article> so the header, the prose, the code
+            blocks and the tables all share one left and right edge. `ch`
+            resolves against this element's font-size, which is why the prose
+            scale is set here too — inherited from the 0.9375rem body size the
+            same value would come out roughly 150px narrower. 56ch is about 76
+            characters a line, the top of the comfortable range: past ~80 the
+            eye starts losing its place on the return sweep. */}
+        <article className="min-w-0 max-w-[56ch] text-prose md:text-prose-lg">
+          <header className="border-b border-bg3 pb-8">
+            <div className="mb-3.5 flex flex-wrap items-center gap-2.5 font-mono text-[0.7rem] tracking-[0.1em] uppercase text-ink3">
               <time dateTime={meta.date}>{formatPostDate(meta.date)}</time>
               <span className="h-1 w-1 rounded-full bg-bg3" aria-hidden />
               <span>{readingTime} min read</span>
@@ -73,11 +84,13 @@ export default async function PostPage({ params }: Params) {
               ) : null}
             </div>
 
-            <h1 className="font-serif text-[2rem] font-semibold leading-[1.15] tracking-[-0.03em] text-ink">
+            {/* text-balance keeps a long title from dropping one orphan word
+                onto its own line — the most common look of a broken headline. */}
+            <h1 className="font-editorial text-[2.25rem] font-semibold leading-[1.12] tracking-[-0.015em] text-balance text-ink md:text-[2.9rem]">
               {meta.title}
             </h1>
 
-            <p className="mt-3.5 text-[1rem] leading-[1.65] text-ink2">
+            <p className="mt-4 text-prose text-pretty text-ink2 md:text-[1.3rem] md:leading-[1.55]">
               {meta.description}
             </p>
 
@@ -92,9 +105,7 @@ export default async function PostPage({ params }: Params) {
             <TableOfContents headings={headings} variant="inline" />
           </div>
 
-          <div className="max-w-[68ch]">
-            <Content />
-          </div>
+          <Content />
         </article>
 
         <aside className="hidden lg:block">

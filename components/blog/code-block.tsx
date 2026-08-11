@@ -52,21 +52,23 @@ export async function CodeBlock({
   });
 
   return (
-    <figure className="group relative my-6 overflow-hidden rounded-lg border border-[#373e47] bg-[#22272e]">
+    <figure className="group relative my-7 overflow-hidden rounded-lg border border-[#373e47] bg-[#22272e]">
       {title ? (
-        <figcaption className="flex items-center justify-between gap-3 border-b border-[#373e47] px-4 py-2">
-          <span className="truncate font-mono text-[0.72rem] text-[#adbac7]">
+        <figcaption className="flex items-center justify-between gap-3 border-b border-[#373e47] px-4 py-2.5">
+          <span className="truncate font-mono text-[0.8rem] text-[#adbac7]">
             {title}
           </span>
           {language !== "text" ? (
-            <span className="shrink-0 font-mono text-[0.62rem] tracking-[0.1em] uppercase text-[#636e7b]">
+            <span className="shrink-0 font-mono text-[0.68rem] tracking-[0.1em] uppercase text-[#636e7b]">
               {language}
             </span>
           ) : null}
         </figcaption>
       ) : null}
 
-      <CopyButton code={source} className={title ? "top-11" : "top-2.5"} />
+      {/* Clears the filename bar when there is one; the offset tracks that
+          bar's height, so it changes if its padding or type size does. */}
+      <CopyButton code={source} className={title ? "top-[3.1rem]" : "top-2.5"} />
 
       <div
         className={cn("code-scroll", showLineNumbers && "code-line-numbers")}

@@ -41,15 +41,17 @@ export function Callout({
   return (
     <aside
       className={cn(
-        "my-6 flex gap-3 rounded-lg border px-4 py-3.5",
+        "my-7 flex gap-3 rounded-lg border px-4 py-4 md:px-5",
         variant.wrapper,
       )}
     >
       <Icon
-        className={cn("mt-0.5 h-4 w-4 shrink-0", variant.icon_)}
+        className={cn("mt-1 h-[1.05rem] w-[1.05rem] shrink-0", variant.icon_)}
         aria-hidden
       />
-      <div className="[&>*:first-child]:mt-0 [&>*:last-child]:mb-0 text-[0.9rem] leading-relaxed text-ink2">
+      {/* One tier below body prose so an aside stays an aside, but large enough
+          not to look like fine print next to 19px text. */}
+      <div className="text-prose-sm text-ink2 md:text-prose [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&>p]:my-3">
         <span className="sr-only">{variant.label}: </span>
         {children}
       </div>

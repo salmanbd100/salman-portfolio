@@ -5,8 +5,8 @@ import { TagChip } from "./tag-chip";
 
 export function PostCard({ post }: { post: Post }) {
   return (
-    <article className="border-t border-bg3 py-7 first:border-t-0 first:pt-0">
-      <div className="mb-2.5 flex flex-wrap items-center gap-2.5 font-mono text-[0.65rem] tracking-[0.1em] uppercase text-ink3">
+    <article className="border-t border-bg3 py-8 first:border-t-0 first:pt-0">
+      <div className="mb-2.5 flex flex-wrap items-center gap-2.5 font-mono text-[0.7rem] tracking-[0.1em] uppercase text-ink3">
         <time dateTime={post.meta.date}>{formatPostDate(post.meta.date)}</time>
         <span className="h-1 w-1 rounded-full bg-bg3" aria-hidden />
         <span>{post.readingTime} min read</span>
@@ -17,7 +17,7 @@ export function PostCard({ post }: { post: Post }) {
         ) : null}
       </div>
 
-      <h2 className="font-serif text-[1.28rem] font-semibold tracking-[-0.02em] leading-snug">
+      <h2 className="font-editorial text-[1.5rem] font-semibold tracking-[-0.01em] leading-snug text-balance md:text-[1.65rem]">
         <Link
           href={`/blog/${post.slug}`}
           className="text-ink no-underline transition-colors duration-150 hover:text-accent"
@@ -26,7 +26,7 @@ export function PostCard({ post }: { post: Post }) {
         </Link>
       </h2>
 
-      <p className="mt-2 text-[0.9rem] leading-[1.7] text-ink2">
+      <p className="mt-2.5 text-prose-sm text-pretty text-ink2 md:text-prose">
         {post.meta.description}
       </p>
 

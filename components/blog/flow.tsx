@@ -30,7 +30,7 @@ export function Flow({
   caption?: string;
 }) {
   return (
-    <figure className="my-6">
+    <figure className="my-7">
       <div className="flex flex-col md:flex-row md:items-stretch">
         {steps.map((step, index) => (
           <Fragment key={`${step.label}-${index}`}>
@@ -49,11 +49,11 @@ export function Flow({
                 "min-w-0 flex-1 rounded-md border border-bg3 bg-bg2 px-3 py-2.5",
               )}
             >
-              <div className="text-[0.8rem] leading-snug font-medium text-ink">
+              <div className="text-[0.9rem] leading-snug font-medium text-ink">
                 {step.label}
               </div>
               {step.note ? (
-                <div className="mt-1 font-mono text-[0.66rem] leading-snug text-ink3">
+                <div className="mt-1 font-mono text-[0.72rem] leading-snug text-ink3">
                   {step.note}
                 </div>
               ) : null}
@@ -63,7 +63,7 @@ export function Flow({
       </div>
 
       {caption ? (
-        <figcaption className="mt-2.5 text-[0.75rem] text-ink3">
+        <figcaption className="mt-3 text-[0.83rem] text-ink3">
           {caption}
         </figcaption>
       ) : null}
