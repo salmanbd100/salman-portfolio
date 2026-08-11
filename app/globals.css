@@ -27,28 +27,41 @@
   --text-prose-lg: 1.1875rem;
   --text-prose-lg--line-height: 1.75;
 
-  /* Portfolio design tokens — clean slate + indigo */
+  /* Design tokens — warm paper + teal.
+     One palette for the whole site. The page is a warm off-white rather than
+     pure white: a screen at full white is where eye strain starts, and prose is
+     read for minutes at a time. Everything sits on it, portfolio included, so
+     moving between a post and the site is not a change of ground.
+     Every surface is warm, not just the page. A cool grey panel on a warm page
+     reads as a hole punched through it. Each step goes darker rather than
+     lighter, since the page is already near the top of the range and nothing on
+     it should out-brighten it. */
   --color-ink: #0f172a;
   --color-ink2: #334155;
-  --color-ink3: #64748b;
+  /* Muted text. On the old white page #64748b measured 4.79:1; on paper it
+     drops to 4.49:1, just under the 4.5:1 AA floor for text this small. Same
+     grey, nudged down until it clears — 4.95:1. */
+  --color-ink3: #626d7c;
 
-  --color-bg: #ffffff;
-  --color-bg2: #f8fafc;
-  --color-bg3: #f1f5f9;
-  /* One step darker than bg3 — a quote or aside needs to read as a distinct
-     surface against white, which #f1f5f9 does not at prose sizes. */
-  --color-bg4: #e6ebf2;
+  --color-bg: #faf8f4;
+  --color-bg2: #f2efe8;
+  --color-bg3: #e6e1d6;
+  /* Between bg2 and bg3, so a blockquote reads as its own surface and still
+     shows its border. Deliberately not part of the numbered ramp. */
+  --color-quote: #ebe6da;
 
   --color-accent: #2e7d96;
   --color-accent2: #3a98b4;
-  --color-accent-bg: #e3f2f7;
+  --color-accent-bg: #e4eef0;
   --color-accent-dark: #1f6278;
 
   --color-amber: #f59e0b;
-  --color-amber-bg: #fffbeb;
+  /* The slate-era #fffbeb was brighter than this page, which made a warning
+     look like a light leak rather than a raised surface. */
+  --color-amber-bg: #faf1dc;
 
   --color-blue: #2e7d96;
-  --color-blue-bg: #e3f2f7;
+  --color-blue-bg: #e4eef0;
 
   --color-red: #ef4444;
 
@@ -67,7 +80,9 @@
   --color-muted-foreground: var(--color-ink3);
   --color-accent-foreground: var(--color-accent);
   --color-destructive: var(--color-red);
-  --color-border: #e2e8f0;
+  /* Was a standalone slate #e2e8f0, which is why shadcn borders read cool
+     against the warm surfaces. Pointed at the ramp so it cannot drift again. */
+  --color-border: var(--color-bg3);
   --color-input: var(--color-bg3);
   --color-ring: var(--color-accent);
 

@@ -156,7 +156,7 @@ function List({
                 heading.depth === 3 ? "pl-6" : "pl-3",
                 isActive
                   ? "border-accent font-medium text-accent"
-                  : "text-ink3 hover:border-bg4 hover:text-ink2",
+                  : "text-ink3 hover:border-bg3 hover:text-ink2",
               )}
             >
               {heading.text}

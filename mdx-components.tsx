@@ -113,7 +113,7 @@ const components: MDXComponents = {
     // visibly set apart. Not italicised — a multi-line italic block at 19px is
     // measurably slower to read, and the surface already does the signalling.
     <blockquote
-      className="my-7 rounded-r-lg border-l-[3px] border-accent/50 bg-bg4 px-5 py-4 text-prose text-ink2 md:text-prose-lg [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&>p]:my-3"
+      className="my-7 rounded-r-lg border-l-[3px] border-accent/50 bg-quote px-5 py-4 text-prose text-ink2 md:text-prose-lg [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&>p]:my-3"
       {...props}
     />
   ),
