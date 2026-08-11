@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/lib/data";
@@ -13,39 +14,56 @@ import {
 
 export function Navigation() {
   const [open, setOpen] = useState(false);
+  const [lifted, setLifted] = useState(false);
+
+  // Once the page has moved at all, the bar lifts off it: the hairline gives way
+  // to a shadow, which is what reads as "this is floating over the content".
+  useEffect(() => {
+    const measure = () => setLifted(window.scrollY > 2);
+
+    // Run once up front — a reload part-way down the page restores the scroll
+    // position without ever firing a scroll event.
+    measure();
+    window.addEventListener("scroll", measure, { passive: true });
+
+    return () => window.removeEventListener("scroll", measure);
+  }, []);
 
   return (
     <nav
       className={cn(
         "sticky top-0 z-50",
         "bg-bg/90 backdrop-blur-[16px]",
-        "border-b border-bg3",
         "px-7 h-[52px]",
-        "flex items-center justify-between"
+        "flex items-center justify-between",
+        "border-b transition-shadow duration-200",
+        lifted
+          ? "border-transparent shadow-[0_1px_2px_rgba(15,23,42,0.06),0_6px_16px_-6px_rgba(15,23,42,0.14)]"
+          : "border-bg3 shadow-none"
       )}
     >
-      <a
-        href="#"
+      <Link
+        href="/"
         className="font-serif text-[1.1rem] font-semibold tracking-[-0.02em] text-ink no-underline"
       >
         Salman Rahman
-      </a>
+      </Link>
 
       {/* Desktop links */}
       <ul className="hidden md:flex items-center gap-6 list-none">
         {navLinks.map((link) => (
           <li key={link.href}>
-            <a
+            <Link
               href={link.href}
               className="text-[0.72rem] font-medium tracking-[0.08em] uppercase text-ink3 no-underline transition-colors duration-150 hover:text-accent"
             >
               {link.label}
-            </a>
+            </Link>
           </li>
         ))}
         <li>
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             className={cn(
               "bg-accent text-white",
               "px-3.5 py-1.5 rounded-md",
@@ -55,7 +73,7 @@ export function Navigation() {
             )}
           >
             Hire Me
-          </a>
+          </Link>
         </li>
       </ul>
 
@@ -80,17 +98,17 @@ export function Navigation() {
           </SheetTitle>
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="text-[0.78rem] font-medium tracking-[0.06em] uppercase text-ink2 no-underline py-3 px-3 rounded-md transition-colors hover:bg-bg2 hover:text-accent"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               onClick={() => setOpen(false)}
               className={cn(
                 "mt-4 bg-accent text-white text-center",
@@ -101,7 +119,7 @@ export function Navigation() {
               )}
             >
               Hire Me
-            </a>
+            </Link>
           </nav>
         </SheetContent>
       </Sheet>

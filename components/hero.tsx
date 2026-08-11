@@ -56,7 +56,7 @@ export function Hero() {
         {/* Eyebrow */}
         <div className="font-mono text-[0.68rem] tracking-[0.12em] uppercase text-ink3 mb-3 flex items-center gap-2">
           <span className="w-6 h-px bg-ink3" />
-          Senior Frontend Engineer &middot; 9+ Years
+          Senior Software Engineer &middot; 9+ Years
         </div>
 
         {/* Headline */}

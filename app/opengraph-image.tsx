@@ -1,8 +1,9 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
-
-export const alt = "Salman Rahman — Senior Frontend Engineer";
+// No `runtime = "edge"`: the edge runtime disables static generation, so the
+// card was being rendered on demand for every crawl. On Node it prerenders
+// once at build.
+export const alt = "Salman Rahman — Senior Software Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -29,7 +30,7 @@ export default function OGImage() {
             marginBottom: 24,
           }}
         >
-          Senior Frontend Engineer &middot; 9+ Years
+          Senior Software Engineer &middot; 9+ Years
         </div>
         <div
           style={{

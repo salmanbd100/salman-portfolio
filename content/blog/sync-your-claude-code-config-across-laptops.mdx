@@ -1,0 +1,147 @@
+export const meta = {
+  title: "Sync your Claude Code config across laptops",
+  description:
+    "Move ~/.claude into Google Drive and leave a symlink behind, so your Claude Code setup follows you to any machine. Plus what that sync will not fix.",
+  date: "2026-08-12",
+  tags: ["claude-code", "developer-tools", "macos"],
+  draft: false,
+};
+
+Claude Code keeps everything it knows about you in one hidden folder:
+`~/.claude`. Settings, memory, skills, hooks, the lot. You never open it by
+hand, so you never think about it — right up to the day you set up a new laptop
+and every preference you tuned over six months is gone.
+
+You can fix this in about five minutes, with a tool you already have. Move the
+folder into Google Drive, then leave a shortcut behind so your machine still
+finds it where it expects to. Dropbox and iCloud Drive work the same way.
+
+## What is actually in that folder
+
+Worth looking before you sync it, because it is bigger than you think. On my
+machine `~/.claude` is **362 MB**, and almost none of that is configuration:
+
+| Path | Size | What it is |
+|---|---|---|
+| `projects/` | 169 MB | Session transcripts, per-project memory |
+| `plugins/` | 165 MB | Installed plugin code |
+| `file-history/` | 16 MB | Snapshots of files Claude edited |
+| Settings, memory, skills, hooks | ~30 KB | The part you actually tuned |
+
+The stuff you would grieve is a rounding error. Everything else is history and
+downloaded code. That matters later, so hold onto it.
+
+## One symlink, and Drive does the rest
+
+A symlink is a shortcut. When something opens a symlink named `.claude`, the
+filesystem quietly says "the real thing lives over there" and redirects. Claude
+Code cannot tell the difference, and does not need to.
+
+So the whole trick is two moves: put the real folder inside Google Drive, then
+drop a symlink in its old home pointing at the new one.
+
+<Flow
+  caption="Every write lands inside the Drive folder, so Drive uploads it."
+  steps={[
+    { label: "Claude Code", note: "writes to ~/.claude" },
+    { label: "Symlink", note: "redirects" },
+    { label: "Drive folder", note: "the real files" },
+    { label: "Google", note: "uploads in seconds" },
+  ]}
+/>
+
+No cron job, no `rsync`, no discipline required. That last part is the point.
+Manual backups feel important until the exact moment you need one.
+
+## The setup
+
+Install the Google Drive app, sign in, and let the first sync finish. Then save
+this and run it once:
+
+```bash title="link-claude-to-drive.sh" showLineNumbers
+#!/usr/bin/env bash
+set -euo pipefail
+
+root=""
+for d in "$HOME/Library/CloudStorage"/GoogleDrive-*; do
+  if [ -d "$d/My Drive" ]; then
+    root="$d/My Drive"
+    break
+  fi
+done
+
+if [ -z "$root" ]; then
+  echo "No Google Drive found. Install it, sign in," >&2
+  echo "wait for the first sync, then re-run." >&2
+  exit 1
+fi
+
+dest="$root/dotfiles-backup/claude"
+mkdir -p "$(dirname "$dest")"
+
+if [ -L "$HOME/.claude" ]; then
+  echo "Already linked."
+elif [ -d "$HOME/.claude" ] && [ ! -e "$dest" ]; then
+  mv "$HOME/.claude" "$dest"
+  ln -s "$dest" "$HOME/.claude"
+elif [ -e "$dest" ] && [ ! -e "$HOME/.claude" ]; then
+  ln -s "$dest" "$HOME/.claude"
+else
+  echo "A copy exists in both places." >&2
+  echo "Merge them by hand before linking." >&2
+  exit 1
+fi
+
+ls -ld "$HOME/.claude"
+```
+
+Lines 5–11 find your Drive root, which on current macOS lives under
+`~/Library/CloudStorage/GoogleDrive-<your-email>`. The three branches then cover
+the three states you can be in: already linked, folder here and Drive empty, or
+Drive has the copy and this machine has nothing.
+
+Quit Claude Code before running it. Moving a directory out from under a running
+process is asking for a confusing bug report.
+
+## The second laptop
+
+Install Drive, sign in with the same account, and wait until
+`dotfiles-backup/claude` appears under **My Drive**. Then run the same script.
+It finds the synced copy, creates the symlink, and you are back to your usual
+setup — same skills, same hooks, same memory.
+
+The script is safe to run twice. If everything is already wired up it says so
+and stops.
+
+## What this does not fix
+
+Two honest limits, both worth knowing before you trust this.
+
+**It is a backup, not a merge.** Google Drive syncs files, and it has no idea
+that `history.jsonl` is append-only or that a session transcript is mid-write.
+Run Claude Code on two machines at once and Drive will resolve that the only way
+it knows how: by keeping one version and parking the other next to it as a
+conflicted copy. Fine for one person moving between machines. Not a shared
+config for a team.
+
+**Not everything travels.** On macOS your login token is not in this folder —
+there is no credentials file in mine, because the Keychain holds it. That is
+good news for the blast radius, and it means a fresh laptop still needs one
+`claude` login. Check your own platform before assuming the same.
+
+<Callout type="warn">
+  `projects/` holds full session transcripts — your code, your terminal output,
+  your prompts. Keep this in your own private Drive. Never a shared drive, never
+  a machine someone else uses.
+</Callout>
+
+If the 362 MB bothers you, sync less. Point the symlink at a folder holding only
+`settings.json`, `CLAUDE.md`, `skills/`, and `hooks/`, and let the transcripts
+and plugin code stay local where they belong.
+
+## Takeaway
+
+Move it, link it, forget it. The same pattern carries `.gitconfig`, `.zshrc`,
+and your editor settings between machines for the same five minutes of work.
+Just keep secrets out of it — SSH keys and cloud credentials belong in a
+password manager, not a folder that syncs itself.

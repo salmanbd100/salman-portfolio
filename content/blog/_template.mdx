@@ -1,0 +1,84 @@
+export const meta = {
+  // Aim for 60 characters or fewer — Google truncates past that.
+  title: "Post Title",
+  // 50–155 characters. Becomes the meta description, the card blurb on /blog,
+  // the og:description, and the RSS item description.
+  description: "One or two sentences describing what the reader will learn.",
+  date: "2026-01-01",
+  // Lowercase kebab-case. Each becomes a URL at /blog/tag/<tag>.
+  tags: ["nextjs"],
+  draft: true,
+};
+
+## A Heading
+
+Regular prose. Inline `code` works. Three or more headings adds a table of
+contents automatically.
+
+Braces in prose must be inside backticks — MDX reads a bare `{` as the start of
+a JSX expression and fails the build.
+
+<Callout type="info">
+  Available without importing. Types: `info`, `warn`, `tip`.
+</Callout>
+
+## Diagrams
+
+A step/pipeline flow. Horizontal on desktop, stacked on mobile:
+
+<Flow
+  caption="How a post becomes HTML."
+  steps={[
+    { label: "MDX file", note: "content/blog/*.mdx" },
+    { label: "Turbopack", note: "compiles at build" },
+    { label: "Shiki", note: "highlights code" },
+    { label: "Static HTML", note: "no client JS" },
+  ]}
+/>
+
+For branching or tree shapes, use ASCII art in a `text` fence instead — it
+wraps and scrolls like any other code block:
+
+```text
+request
+  ├─ cache hit  → return cached
+  └─ cache miss → render → store → return
+```
+
+## Code Blocks
+
+A plain fence:
+
+```ts
+const plain = true;
+```
+
+With a filename header, and lines 2–3 highlighted:
+
+```ts title="lib/example.ts" {2-3}
+const a = 1;
+const b = 2;
+const c = 3;
+const d = 4;
+```
+
+With line numbers:
+
+```bash showLineNumbers
+pnpm install
+pnpm dev
+```
+
+Diff notation, using comment annotations:
+
+```ts
+const before = 1; // [!code --]
+const after = 2; // [!code ++]
+```
+
+Focus, which dims everything else until hover:
+
+```ts
+const ignored = 1;
+const important = 2; // [!code focus]
+```
