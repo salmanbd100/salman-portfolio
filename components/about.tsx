@@ -47,7 +47,7 @@ export function About() {
       <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-12 items-start">
         {/* Left — profile photo */}
         <div className="relative">
-          <div className="w-full aspect-[3/4] rounded-[10px] overflow-hidden bg-bg2 border border-bg3">
+          <div className="relative w-full aspect-[3/4] rounded-[10px] overflow-hidden bg-bg2 border border-bg3">
             <Image
               src="/profile.jpg"
               alt="Salman Rahman — Senior Frontend Engineer"
