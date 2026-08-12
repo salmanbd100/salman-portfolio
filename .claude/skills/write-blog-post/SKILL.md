@@ -1,6 +1,6 @@
 ---
 name: write-blog-post
-description: Use when the user gives a topic and wants a blog post written for this portfolio's tech blog — e.g. "write a blog post about X", "blog this", "add a post on React Server Components". Scaffolds the MDX file with the project's script, writes in simple English with diagrams and tables where they help, and verifies the build before handing back.
+description: Use when the user gives a topic and wants a blog post written for this portfolio's tech blog — e.g. "write a blog post about X", "blog this", "add a post on React Server Components" — or asks to expand, rewrite, or simplify an existing post in `content/blog/`.
 ---
 
 # Writing a blog post
@@ -21,7 +21,7 @@ This creates `content/blog/<slug>.mdx` with `draft: true` and prints the preview
 
 ## 2. Get the facts right before writing
 
-This blog is read by engineers. A wrong claim costs more than a missing one.
+This blog is read by engineers at every level, including people meeting the topic for the first time. They cannot catch your mistakes, so a wrong claim costs more than a missing one.
 
 - If the topic touches Next.js, **read `node_modules/next/dist/docs/`** before writing. Per `AGENTS.md` this version has breaking changes that differ from training data.
 - For other libraries, check the installed version in `package.json` and read that version's docs (the context7 MCP tools are good for this).
@@ -49,28 +49,78 @@ The reader may be tired, on a phone, or reading in a second language. Write for 
 - **Short sentences.** Aim under 20 words. One idea per sentence.
 - **Common words.** "use" not "utilize", "help" not "facilitate", "to" not "in order to", "so" not "consequently".
 - **Active voice.** "Turbopack drops the plugin" beats "the plugin is dropped by Turbopack".
-- **Define jargon on first use**, in one clause. Then use it freely.
+- **Define jargon on first use** — see the first-mention contract in section 5. Then use it freely.
 - **Cut hedging.** "This fails" not "this may potentially fail in some cases".
 - **No filler openings.** Never start with "In today's fast-paced world of web development". Start with the problem.
 
 Write the post the user would want to read: concrete, specific, and honest about limits.
 
-## 5. Keep it short
+## 5. Explain the thing, don't just name it
+
+**The floor: assume the reader writes JavaScript and has built a web page. Assume nothing above that line** — not the framework, not the build tool, not the pattern, not the acronym. A reader who already knows the topic can skim an explanation. A reader who doesn't cannot skim a gap.
+
+### The first-mention contract
+
+The first time the post uses a technical term, that sentence and the one after it do three jobs, in this order:
+
+1. **Name** the term.
+2. **Say what it is**, using only words the reader already has.
+3. **Say why it matters here** — what breaks, costs, or improves because of it.
+
+Naming without the other two is the failure mode:
+
+```text
+Not enough:
+  Turbopack can't serialize functions, so rehype-pretty-code
+  is out.
+
+The contract:
+  Turbopack is the bundler that turns your source files into
+  what the browser downloads. Part of it is written in Rust,
+  and config has to cross from JavaScript into Rust to reach
+  it. Plain data survives that trip; functions do not. That
+  one limit rules out rehype-pretty-code, whose whole config
+  is functions.
+```
+
+Both are true. Only the second leaves the reader able to predict which *other* plugins will break.
+
+### Explain the mechanism, not just the label
+
+Naming a cause is not explaining it. Give the one step that makes it click: what moves where, and what happens when it arrives. If your explanation would satisfy someone who already knew the answer, it is a summary, not an explanation.
+
+### One concrete case per concept
+
+Every concept gets a small, specific example — real names, real values, real output. "A screen that re-renders on every keystroke" lands; "suboptimal change detection" does not.
+
+### Where to stop
+
+The floor is the boundary. Terms below it stay unexplained, and there is no glossary section, no "as you may know", no apologising for the reader's level. Explaining fully is not the same as writing slowly — keep the sentences as short as section 4 demands.
+
+## 6. How long
 
 | Target | Value |
 |---|---|
-| Length | **600–1000 words** |
-| Reading time | 3–5 minutes (shown on the post) |
-| H2 sections | 4–6 |
+| Length | **1200–1800 words** |
+| Reading time | 6–8 minutes (shown on the post) |
+| H2 sections | 5–8 |
 | Paragraph | 2–4 sentences, never more |
 
-If the topic will not fit, do not sprawl — narrow the angle, or propose splitting it into two posts and ask which to write first.
+**The extra room over a short post is for explanation, not for more topics.** Same angle as a short post would have taken, properly explained.
+
+That distinction is the whole rule, so check it directly: if you are adding sections to reach the word count, you have widened the topic instead of explaining it. Narrow it back and explain what is left more fully.
+
+| Symptom | Usually means |
+|---|---|
+| Under 1200 words | Terms are being named without the first-mention contract |
+| Over 1800 words | Two posts wearing one title — split it and ask which comes first |
 
 Structure that works:
 
 <Flow
   steps={[
-    { label: "The problem", note: "1 short paragraph" },
+    { label: "The problem", note: "concrete, 1-2 paragraphs" },
+    { label: "Background", note: "terms the rest needs" },
     { label: "Why it happens", note: "the mechanism" },
     { label: "The fix", note: "code + explanation" },
     { label: "Takeaway", note: "2-3 sentences" },
@@ -79,9 +129,9 @@ Structure that works:
 
 Three or more H2 headings triggers the table of contents automatically. Use `##` for sections and `###` sparingly.
 
-## 6. Use visuals where they explain better than prose
+## 7. Use visuals where they explain better than prose
 
-Do not decorate. Add a visual only when it carries information the sentence cannot.
+Do not decorate. Add a visual only when it carries information the sentence cannot. Explaining for a beginner raises the value of diagrams and worked examples — it does not license decoration.
 
 | What you need to show | Use |
 |---|---|
@@ -140,12 +190,13 @@ const c = 3;
 - `// [!code ++]` / `// [!code --]` for diffs, `// [!code focus]` to dim everything else.
 - **Keep lines under ~60 characters.** Longer lines force horizontal scrolling on phones.
 
-## 7. Formatting for readability
+## 8. Formatting for readability
 
 - **Blank line between every block.** Headings, paragraphs, fences, components — all separated.
 - **Wrap the MDX source at about 80 characters.** It keeps diffs reviewable. It does not affect rendering.
 - **Bold sparingly** — one or two per section, for the thing you would say louder.
 - Break up any run of three or more plain paragraphs with a list, table, visual, or subheading.
+- **Every table column gets a header, including the first.** A blank first header renders as an empty cell and leaves the reader guessing what the row labels are. If no single word covers them, the rows are not parallel — reword them until one does.
 
 ### The MDX brace trap
 
@@ -154,7 +205,7 @@ MDX reads a bare `{` as the start of a JSX expression, and the build fails. Any 
 - Wrong: highlight lines with {2-3}
 - Right: highlight lines with `` `{2-3}` ``
 
-## 8. Verify before handing back
+## 9. Verify before handing back
 
 Run these. Do not report the post as done without them.
 
@@ -166,12 +217,14 @@ Then with `pnpm dev` running:
 
 1. Open `/blog/<slug>` — check headings, code blocks, and any diagram render.
 2. Open `/blog/<slug>/opengraph-image` — confirm the share card is a clean 1200×630 with the title fully visible and nothing clipped.
-3. Check the reading time shown on the post is in the 3–5 minute range.
+3. Check the reading time shown on the post is in the 6–8 minute range.
 4. Watch the build output for `[blog]` warnings about title or description length.
+
+Then re-read the finished post once, hunting only for terms that arrive without the first-mention contract. This is the check that fails most often — you know the topic by now, so the gaps are invisible unless you look for them deliberately.
 
 The draft is reachable in dev and on Vercel previews, and hidden on production, so it is safe to push while `draft: true`.
 
-## 9. Hand back
+## 10. Hand back
 
 Tell the user:
 
@@ -186,7 +239,10 @@ Tell the user:
 - [ ] Technical claims checked against installed docs
 - [ ] Code snippets actually compile or run
 - [ ] `title` ≤ 60 chars, `description` 50–155 chars, real date, ≥1 existing-style tag
-- [ ] 600–1000 words, 4–6 H2 sections, paragraphs of 2–4 sentences
+- [ ] 1200–1800 words, 5–8 H2 sections, paragraphs of 2–4 sentences
+- [ ] Extra length went to explanation, not to extra topics
+- [ ] Every technical term gets the first-mention contract: name, plain meaning, why it matters
+- [ ] Each concept has one concrete case with real names and values
 - [ ] Simple English: short sentences, common words, active voice
 - [ ] Visuals earn their place; `<Flow>` used only for linear steps
 - [ ] Code fence lines under ~60 chars, `title=` set where the file matters
