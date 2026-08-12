@@ -22,7 +22,7 @@ export const AUTHOR = {
 export const BLOG = {
   title: "Blog",
   description:
-    "Notes on frontend architecture, React, TypeScript, and shipping production web applications.",
+    "Notes on full-stack TypeScript — React and Next.js at the front, Node.js and Postgres behind them — and what it takes to ship production web applications.",
   rssPath: "/blog/rss.xml",
 } as const;
 

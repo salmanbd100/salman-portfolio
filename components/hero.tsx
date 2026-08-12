@@ -51,7 +51,7 @@ export function Hero() {
           )}
         >
           <span className="w-1.5 h-1.5 bg-accent rounded-full animate-blink" />
-          Open to international roles
+          Taking on new problems
         </div>
 
         {/* Eyebrow */}
@@ -75,9 +75,14 @@ export function Hero() {
             products people actually use
           </strong>{" "}
           &mdash; for Norwegian government agencies, Swiss insurers, and US
-          startups. React, TypeScript, and Next.js at the core, with{" "}
-          <strong className="text-ink font-medium">full-stack reach</strong>{" "}
-          when the problem demands it.
+          startups. I work{" "}
+          <strong className="text-ink font-medium">across the stack</strong>,
+          from Node APIs and Postgres schemas up to the interface &mdash; with
+          the deepest years in{" "}
+          <strong className="text-ink font-medium">
+            React, TypeScript, and Next.js
+          </strong>
+          .
         </p>
 
         {/* CTA buttons */}

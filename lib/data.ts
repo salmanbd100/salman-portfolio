@@ -55,12 +55,6 @@ export interface ContactLink {
   href: string;
 }
 
-export interface CtaCard {
-  icon: string;
-  label: string;
-  value: string;
-}
-
 // ─── Data ───
 
 // Root-relative, not bare fragments: from a /blog/* URL a bare "#about"
@@ -100,17 +94,17 @@ export const statCards: StatCard[] = [
 
 export const breadthItems: BreadthItem[] = [
   {
-    label: "Frontend Core",
+    label: "Frontend Depth",
     description:
       "React \u00B7 TypeScript \u00B7 Next.js \u00B7 Redux",
   },
   {
-    label: "Backend Fluency",
+    label: "Backend & APIs",
     description: "Node.js \u00B7 Express \u00B7 REST APIs \u00B7 GraphQL",
   },
   {
-    label: "DevOps Basics",
-    description: "Docker \u00B7 CI/CD \u00B7 AWS \u00B7 Git workflows",
+    label: "Data & Infrastructure",
+    description: "PostgreSQL \u00B7 Prisma \u00B7 Docker \u00B7 CI/CD \u00B7 AWS",
   },
   {
     label: "AI-Powered Apps",
@@ -128,7 +122,7 @@ export const experiences: Experience[] = [
     clientLabel: "Norwegian clients",
     role: "Senior Software Engineer",
     summary:
-      "Led frontend architecture for a government form-builder platform used across Norwegian municipalities \u2014 while also contributing to backend APIs and CI/CD pipelines.",
+      "Own the architecture of a government form-builder platform used across Norwegian municipalities \u2014 React and Svelte at the front, Node.js APIs and CI/CD pipelines behind them.",
     bullets: [
       "<strong>Architected</strong> a dynamic form-builder platform for Norwegian public sector clients \u2014 reduced form rendering latency by <strong>40%</strong>",
       "<strong>Introduced</strong> scalable Redux architecture and React best practices, cutting new-developer ramp-up time by <strong>50%</strong>",
@@ -246,7 +240,7 @@ export const skillCategories: SkillCategory[] = [
     icon: "\u{1F7E2}",
     groups: [
       {
-        title: "Backend fluency \u2014 can contribute, not a blocker",
+        title: "Services & APIs \u2014 shipped to production",
         tags: [
           { name: "Node.js", tier: "core" },
           { name: "Express", tier: "core" },
@@ -271,7 +265,7 @@ export const skillCategories: SkillCategory[] = [
         ],
       },
     ],
-    note: "I can build and maintain backend APIs, review backend PRs, and collaborate deeply with backend teams \u2014 without needing a translator.",
+    note: "I design and own backend services rather than just consuming them \u2014 API contracts, data models, and the reviews that keep both honest.",
   },
   {
     id: "devops",
@@ -307,7 +301,7 @@ export const skillCategories: SkillCategory[] = [
         ],
       },
     ],
-    note: "Comfortable in DevOps conversations \u2014 can set up pipelines, manage Docker containers, and contribute to deployment workflows.",
+    note: "I set up the pipelines my own work ships through \u2014 Docker images, CI/CD, and deployments \u2014 rather than waiting on a platform team.",
   },
   {
     id: "ai",
@@ -350,7 +344,7 @@ export const skillCategories: SkillCategory[] = [
       {
         title: "Team & leadership",
         tags: [
-          { name: "Frontend architecture decisions", tier: "core" },
+          { name: "Full-stack architecture decisions", tier: "core" },
           { name: "Code review", tier: "core" },
           { name: "Technical mentoring", tier: "strong" },
           { name: "Remote team management", tier: "strong" },
@@ -378,25 +372,6 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
-export const ctaCards: CtaCard[] = [
-  { icon: "\u{1F30D}", label: "Remote", value: "USD or EUR salary" },
-  {
-    icon: "\u2708\uFE0F",
-    label: "Visa sponsorship",
-    value: "Open to relocation",
-  },
-  {
-    icon: "\u{1F4C5}",
-    label: "Availability",
-    value: "2 months\u2019 notice",
-  },
-  {
-    icon: "\u{1F4BC}",
-    label: "Role type",
-    value: "Full-time \u00B7 Senior / Lead level",
-  },
-];
-
 export const contactLinks: ContactLink[] = [
   {
     icon: "\u2709\uFE0F",
@@ -418,9 +393,10 @@ export const contactLinks: ContactLink[] = [
   },
 ];
 
-export const openToItems: string[] = [
-  "Senior or Lead Frontend Engineer roles (React / TypeScript / Next.js)",
-  "Remote-first teams with USD or EUR compensation",
-  "Companies serving European or global enterprise clients",
-  "Teams that prioritize code quality, accessibility, and performance",
+export const bestFitItems: string[] = [
+  "Products with real users and real constraints — public sector, enterprise, regulated",
+  "Codebases that have outgrown their architecture and need untangling",
+  "Teams that want one person across the stack, not a handoff at the API boundary",
+  "Work where performance and accessibility are requirements, not nice-to-haves",
+  "Senior or Lead, full-stack TypeScript, remote-first — sponsorship welcome if the role is on-site",
 ];

@@ -1,12 +1,12 @@
 # Salman Rahman — Portfolio
 
-Senior Software Engineer with 9+ years building high-performance, accessible web applications for clients across Norway, Switzerland, and the US. Based in Dhaka, Bangladesh. Open to remote roles with visa sponsorship.
+Senior Software Engineer with 9+ years building high-performance, accessible web applications end to end for clients across Norway, Switzerland, and the US. Based in Dhaka, Bangladesh. Bring me the problem — a messy requirement, a slow page, an API nobody wants to own — and I'll come back with something shipped.
 
 ---
 
 ## About Me
 
-I specialize in React, TypeScript, and Next.js, with a strong background in frontend architecture, scalable state management, and cross-functional team leadership. I've worked on everything from government form-builder platforms used across Norwegian municipalities to enterprise insurance portals and AI-powered startup products.
+I work across the stack in TypeScript — React, Next.js and Svelte at the front, Node.js, Express and PostgreSQL behind them, on Docker and AWS pipelines I set up myself. The deepest years are in frontend architecture and scalable state management. I've worked on everything from government form-builder platforms used across Norwegian municipalities to enterprise insurance portals and AI-powered startup products.
 
 - **Current role:** Senior Software Engineer at Cefalo (Nov 2022 – Present)
 - **Experience:** 9+ years
@@ -48,7 +48,7 @@ Claude / GPT API integration · Prompt engineering · Cursor · Claude Code
 ## Work History
 
 **Cefalo** — Senior Software Engineer *(Nov 2022 – Present)*
-Led frontend architecture for a government form-builder platform serving Norwegian municipalities. Built data visualization dashboards in Svelte, developed Node.js APIs, and acted as technical advisor across teams.
+Own the architecture of a government form-builder platform serving Norwegian municipalities — React and Svelte at the front, Node.js APIs and CI/CD pipelines behind them. Built data visualization dashboards in Svelte and act as technical advisor across teams.
 `React · Redux · TypeScript · Next.js · Svelte · Node.js · AWS`
 
 **SELISE** — Software Engineer *(Sep 2020 – Oct 2022)*
@@ -130,4 +130,4 @@ Invalid post metadata fails the build rather than shipping a broken page. See
 - LinkedIn: [linkedin.com/in/salmanbd](https://linkedin.com/in/salmanbd)
 - GitHub: [github.com/salmanbd100](https://github.com/salmanbd100)
 
-Open to **Senior or Lead Frontend Engineer** roles — remote-first, USD/EUR compensation, preferably with teams in Germany, Netherlands, Sweden, Canada, Australia, or fully remote.
+Tell me what you're building or fixing and I'll tell you straight whether I'm the right person for it. **Senior or Lead Software Engineer** roles, full-stack TypeScript, remote-first — most often with teams in Germany, the Netherlands, Sweden, Canada, and Australia.

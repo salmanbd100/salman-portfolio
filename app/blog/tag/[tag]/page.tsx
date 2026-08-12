@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (posts.length === 0) return {};
 
   const title = `${tag} — ${BLOG.title} — ${SITE_NAME}`;
-  const description = `${posts.length} ${posts.length === 1 ? "post" : "posts"} tagged ${tag}: frontend engineering notes by ${SITE_NAME}.`;
+  const description = `${posts.length} ${posts.length === 1 ? "post" : "posts"} tagged ${tag}: full-stack engineering notes by ${SITE_NAME}.`;
 
   return {
     title,

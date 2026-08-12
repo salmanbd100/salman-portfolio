@@ -36,16 +36,17 @@ export function CtaBand() {
     >
       <div className="max-w-[1060px] mx-auto text-center">
           <div className="font-mono text-[0.65rem] tracking-[0.12em] uppercase text-accent2 mb-2.5">
-            Currently seeking
+            Start here
           </div>
           <h2 className="font-serif text-[2rem] text-bg tracking-[-0.02em] mb-2.5 leading-[1.15]">
-            Open to the right
+            Bring me the problem.
             <br />
-            international opportunity.
+            I&apos;ll bring the solution.
           </h2>
           <p className="text-[0.85rem] text-[rgba(246,245,241,0.5)] leading-[1.7] max-w-[500px] mx-auto">
-            Looking for Senior Frontend roles at companies that value craft,
-            collaboration, and long-term thinking. Visa sponsorship welcome.
+            A messy requirement, a page that loads too slowly, a codebase nobody
+            wants to touch. Nine years of shipping for Norwegian, Swiss, and US
+            teams says most of them are solvable — tell me yours.
           </p>
       </div>
     </section>

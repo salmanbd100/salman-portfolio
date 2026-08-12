@@ -75,8 +75,9 @@ export function About() {
             <strong className="text-ink font-medium">
               Norway, Switzerland, and the US
             </strong>{" "}
-            — owning frontend architecture, working across time zones, and
-            mentoring junior engineers along the way.
+            — owning architecture from the database up to the interface,
+            working across time zones, and mentoring junior engineers along the
+            way.
           </p>
 
           <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-4">
@@ -88,27 +89,34 @@ export function About() {
           </p>
 
           <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-4">
-            Beyond frontend, I bring{" "}
+            I build the whole path:{" "}
             <strong className="text-ink font-medium">
-              Node.js/Express backend fluency
+              Node.js and Express services
             </strong>
-            , working{" "}
-            <strong className="text-ink font-medium">DevOps knowledge</strong>{" "}
-            (Docker, CI/CD, AWS), and hands-on experience building{" "}
+            ,{" "}
             <strong className="text-ink font-medium">
-              AI-powered applications
+              PostgreSQL and Prisma
             </strong>{" "}
-            — enough full-stack context to collaborate effectively with any
-            engineering team.
+            behind them, the{" "}
+            <strong className="text-ink font-medium">
+              Docker, CI/CD, and AWS
+            </strong>{" "}
+            pipelines that ship them, and{" "}
+            <strong className="text-ink font-medium">
+              AI-powered features
+            </strong>{" "}
+            on top. The interface is where I go deepest — but I don&apos;t hand
+            off at the API boundary.
           </p>
 
           <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-5">
-            Currently seeking{" "}
+            Start with{" "}
             <strong className="text-ink font-medium">
-              remote or visa-sponsored roles
+              the problem you need solved
             </strong>{" "}
-            in Europe, North America, or Australia. Available with two
-            months&apos; notice.
+            — location, notice, and paperwork are details we can sort out after.
+            I&apos;m in Dhaka, and I&apos;ve been shipping with teams in Oslo,
+            Zurich, and the US for nine years.
           </p>
 
           {/* Breadth grid */}

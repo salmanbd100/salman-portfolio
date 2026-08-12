@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { contactLinks, openToItems } from "@/lib/data";
+import { bestFitItems, contactLinks } from "@/lib/data";
 import { TrackedLink } from "@/components/tracked-link";
 
 export function Contact() {
@@ -50,9 +50,9 @@ export function Contact() {
             Let&apos;s talk.
           </h3>
           <p className="text-[0.85rem] text-ink2 leading-[1.75] mb-5">
-            If you&apos;re a recruiter, tech lead, or hiring manager looking
-            for a senior frontend engineer with European enterprise experience
-            — I&apos;d love to hear from you.
+            Recruiter, tech lead, or founder — skip the pitch and tell me what
+            you&apos;re trying to build or fix. I&apos;ll tell you straight
+            whether I&apos;m the right person for it.
           </p>
 
           <div className="flex flex-col gap-2">
@@ -96,10 +96,10 @@ export function Contact() {
         {/* Right — open to */}
         <div className="bg-bg2 border border-bg3 rounded-[10px] p-6 h-fit">
           <h4 className="font-serif text-[1.2rem] mb-3.5">
-            What I&apos;m open to
+            Where I&apos;m most useful
           </h4>
           <ul className="list-none flex flex-col gap-[9px]">
-            {openToItems.map((item) => (
+            {bestFitItems.map((item) => (
               <li
                 key={item}
                 className="text-[0.8rem] text-ink2 flex items-start gap-2 leading-[1.5]"

@@ -35,22 +35,22 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Salman Rahman — Senior Software Engineer",
   description:
-    "Senior Software Engineer with 9+ years building production-grade React applications for European and US clients. TypeScript, Next.js, and scalable frontend architecture. Based in Dhaka, open to remote and relocation.",
+    "Senior Software Engineer with 9+ years shipping full-stack TypeScript for European and US clients — React and Next.js at the front, Node.js and PostgreSQL behind them. Based in Dhaka, working remotely with teams across Europe and the US.",
   keywords: [
     "Senior Software Engineer",
+    "Full Stack Engineer",
     "React Developer",
     "TypeScript",
     "Next.js",
-    "Frontend Architect",
+    "Node.js Developer",
     "Remote Developer",
-    "Full Stack Engineer",
   ],
   authors: [{ name: AUTHOR.name, url: AUTHOR.url }],
   creator: AUTHOR.name,
   openGraph: {
     title: "Salman Rahman — Senior Software Engineer",
     description:
-      "9+ years building production-grade React applications for Norwegian, Swiss & US teams. React, TypeScript, Next.js.",
+      "9+ years shipping full-stack TypeScript for Norwegian, Swiss & US teams. React, Next.js, Node.js, PostgreSQL.",
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: "en_US",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Salman Rahman — Senior Software Engineer",
     description:
-      "9+ years building production-grade React applications for Norwegian, Swiss & US teams.",
+      "9+ years shipping full-stack TypeScript for Norwegian, Swiss & US teams.",
   },
   robots: {
     index: true,

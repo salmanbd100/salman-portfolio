@@ -65,8 +65,9 @@ export function Skills() {
         What I bring to your team.
       </h2>
       <p className="text-[0.95rem] text-ink3 leading-[1.75] max-w-[560px] mb-9">
-        Core expertise in frontend, with backend fluency and DevOps awareness —
-        so I can work across the stack without becoming a blocker.
+        Full-stack delivery — interface, APIs, data, and the pipelines that ship
+        them. Nine years of depth sit in the frontend; the rest I own in
+        production too.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12 items-start">
