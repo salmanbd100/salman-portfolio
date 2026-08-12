@@ -1,0 +1,215 @@
+export const meta = {
+  title: "Stop Picking Frameworks by What Your Team Knows",
+  description:
+    "Familiarity used to settle the framework argument before it started. AI agents weaken that argument, so let the product decide instead.",
+  date: "2026-08-12",
+  tags: ["frontend", "architecture", "ai-agents"],
+  draft: false,
+};
+
+For years, the frontend framework debate ended with one question:
+
+> "Which framework does our team already know?"
+
+That was a fair question. Learning a new ecosystem took months. Hiring for it
+was hard. Switching meant lost velocity and, often, a rewrite. Familiarity was
+a real cost, so it won real arguments.
+
+It is still a cost. It is just a much smaller one than it was, and it should
+stop deciding architecture on its own.
+
+## Familiarity Used To Decide Everything Downstream
+
+Look at the order the old decision ran in:
+
+<Flow
+  caption="The familiarity-first chain. Everything downstream inherits the first box."
+  steps={[
+    { label: "Team expertise", note: "what we know" },
+    { label: "Framework", note: "picked from that" },
+    { label: "Architecture", note: "framework's shape" },
+    { label: "Product", note: "whatever fits" },
+  ]}
+/>
+
+The product sits at the end. It receives whatever the earlier boxes allow.
+Nobody plans it that way, but that is what happens when the first constraint is
+a CV.
+
+## What You Are Actually Choosing
+
+When people say "we picked React", they rarely mean only the React library.
+Two words carry most of the weight in this argument, so it is worth pinning
+them down before going further.
+
+**Ecosystem** is everything you get for free by picking a popular option:
+routing libraries, component kits, testing tools, answers already written on
+Stack Overflow, and people who have solved your problem before. A large
+ecosystem means fewer things you have to build yourself, and fewer evenings
+spent discovering that nobody has hit your bug.
+
+**Opinionated** describes a framework that has already decided how your app
+will be structured. Angular is opinionated — it ships its own routing, its own
+way to fetch data, its own project layout. React is not. React renders
+components and leaves the rest to you.
+
+Neither is better. They move the same work to different places:
+
+| Trade-off                      | Unopinionated (React)    | Opinionated (Angular)  |
+| ------------------------------ | ------------------------ | ---------------------- |
+| Routing, data fetching, state  | You pick each one        | Ships in the box       |
+| Cost when you disagree with it | None, swap it out        | High, you fight it     |
+| Cost across twelve teams       | Twelve different answers | One answer, everywhere |
+
+An unopinionated framework hands you freedom and the bill for it. An
+opinionated one takes both away. Which of those is a gift depends entirely on
+how many people are making decisions.
+
+## What AI Agents Actually Lower
+
+Say your team writes React, and the next project would be better in Angular.
+
+Week one used to be slow. Read the docs. Learn the conventions. Write something
+bad. Rewrite it. An agent removes most of that. It explains an API you have not
+read, writes the repetitive setup code, rewrites your React component the way
+Angular expects it, and answers "how does this ecosystem normally do X" in
+seconds instead of an afternoon.
+
+Month six is a different story.
+
+<Callout type="warn">
+  An agent will write Angular that compiles, passes review, and still fights the
+  framework. A common case: a screen that redraws itself on every keystroke,
+  because the data it reads looks new to the framework each time even when
+  nothing changed. It works. It is just slow, and nobody notices until a user
+  says the page feels sluggish.
+</Callout>
+
+Catching that while you write it, rather than months later, comes from having
+shipped in that framework before. So the claim is narrow, and worth stating
+carefully: **starting is much cheaper now, getting good is not.**
+
+Narrow is still enough. "We would lose three months getting up to speed" was
+the whole force of the familiarity argument. Take away most of those three
+months and you take away most of the argument.
+
+And notice what agents help with least. These are the decisions that actually
+determine whether a product works:
+
+- **Domain modelling** — naming the things your business deals in and how they
+  relate. Get "order", "customer" and "subscription" wrong at the start, and
+  every feature after that quietly fights the model.
+- **System boundaries** — which part of the system owns which data, and what
+  each part is allowed to ask the others for.
+- **Performance budgets** — a limit you set in advance for how much a page may
+  weigh or how long it may take, so the answer is decided before anyone argues.
+- **Accessibility and security** — the requirements nobody notices until they
+  are missing.
+
+None of that is framework-specific, which is exactly why it should be where
+your senior people spend their time.
+
+## Match The Framework To The Product
+
+With familiarity weighted properly, the question becomes what it should have
+been: which ecosystem fits what we are building?
+
+| Product shape                | Reasonable default | Why                             |
+| ---------------------------- | ------------------ | ------------------------------- |
+| Complex SaaS, long evolution | React              | Largest ecosystem, most freedom |
+| Enterprise app, many teams   | Angular            | Framework sets the conventions  |
+| Content or admin heavy       | Vue                | Structured but low ceremony     |
+| Lightweight interactive UI   | Svelte             | Small runtime, simple model     |
+
+SaaS there means software you rent rather than install — Figma, Linear, Notion.
+Those products change shape constantly over years, which is why the freedom to
+restructure matters more for them than it does for a form-heavy internal tool
+that will look much the same in 2030.
+
+Read the table as starting points, not verdicts. The real trade-off is the one
+from the section above: how many decisions do you want to make yourself? For an
+experienced team, React's freedom is leverage. For twelve teams shipping into
+one app, it is twelve slightly different answers to the same question — which
+is exactly the problem Angular's opinions exist to prevent.
+
+Popularity belongs in this decision too, just not at the top. A big ecosystem
+means more libraries, more answers, more candidates. That genuinely lowers
+risk. It does not make a framework right for a regulated banking workflow
+because it is popular with startups.
+
+## Micro-Frontends Are An Org Decision
+
+Sometimes one framework is not the question at all.
+
+Picture a shop's website where one team owns checkout, another owns search, and
+a third owns customer accounts. All three live in one codebase and go out in
+one deploy, so any change means everyone coordinates and waits. That is
+**release coupling**, and it is an organisational problem wearing a technical
+costume.
+
+Micro-frontends are one way out. Each team builds and deploys its own small
+application. A shell page loads them and stitches them together in the browser,
+so the user still sees one site.
+
+```text
+                  Shell
+                    |
+        +-----------+-----------+
+        |           |           |
+    Checkout     Search      Account
+        |           |           |
+        +-----------+-----------+
+                    |
+             Shared platform
+```
+
+Nothing about this requires every team to use the same framework. But "nothing
+requires it" is not "you should". Each framework you add ships its own
+**runtime** — the framework's own code, which the browser downloads and runs
+before any of your code does anything. Three frameworks on one page means three
+of those, and the user pays for it in load time on a page they did not ask to
+be an architecture demo.
+
+The rest of the cost is real whichever way you go: one shared login across
+separate apps, one shared design system so the pages don't look like three
+different websites, routing between apps, and keeping shared libraries on
+versions that agree with each other.
+
+Good reason to take that on: five teams need to release independently. Bad
+reason: micro-frontends are modern.
+
+If one team can build and deploy the whole thing, build a monolith instead —
+one codebase, one deploy, organised well on the inside. That is not the timid
+choice. It is the correct one.
+
+## The Order That Works Better
+
+Invert the chain:
+
+<Flow
+  caption="Product-first. Technology is chosen last, because it is chosen for something."
+  steps={[
+    { label: "Business goal", note: "what we're for" },
+    { label: "Product + users", note: "the experience" },
+    { label: "Architecture", note: "teams, boundaries" },
+    { label: "Technology", note: "fits the above" },
+  ]}
+/>
+
+Before naming a framework, answer these: who are the users, what shape is the
+product (content, data, forms, real-time), how many teams will touch it, how
+long is it meant to live, and how fast does it have to be. Those answers narrow
+the field far better than a survey of what your team already knows.
+
+## Takeaway
+
+Don't choose a framework because you know it. Choose it because the product
+needs it — then use every tool available, agents included, to close the gap
+between that choice and shipping it.
+
+"We don't know that framework" gets weaker every year. It has not gone away.
+Ignore it completely and you end up with four frameworks in one product and
+nobody who can fix any of them.
+
+But it was never the real question. The real question is whether the framework
+is right for what you are building.
