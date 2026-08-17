@@ -1,7 +1,7 @@
 export const meta = {
   title: "Sync your Claude Code config across laptops",
   description:
-    "Move ~/.claude into Google Drive and leave a symlink behind, so your Claude Code setup follows you to any machine. Plus what that sync will not fix.",
+    "Move ~/.claude, ~/.gitconfig and ~/.zshrc into Google Drive and leave symlinks behind, so your whole setup follows you to a new machine.",
   date: "2026-08-12",
   tags: ["claude-code", "developer-tools", "macos"],
   draft: false,
@@ -12,9 +12,12 @@ Claude Code keeps everything it knows about you in one hidden folder:
 hand, so you never think about it — right up to the day you set up a new laptop
 and every preference you tuned over six months is gone.
 
-You can fix this in about five minutes, with a tool you already have. Move the
-folder into Google Drive, then leave a shortcut behind so your machine still
-finds it where it expects to. Dropbox and iCloud Drive work the same way.
+The same is true of `~/.gitconfig` and `~/.zshrc`. They are small, you wrote
+them once, and you would not enjoy writing them again from memory.
+
+You can fix all three in about five minutes, with a tool you already have. Move
+the files into Google Drive, then leave shortcuts behind so your machine still
+finds them where it expects to. Dropbox and iCloud Drive work the same way.
 
 ## What is actually in that folder
 
@@ -31,14 +34,17 @@ machine `~/.claude` is **362 MB**, and almost none of that is configuration:
 The stuff you would grieve is a rounding error. Everything else is history and
 downloaded code. That matters later, so hold onto it.
 
+`.gitconfig` and `.zshrc` are a few kilobytes each, so they cost nothing to add.
+
 ## One symlink, and Drive does the rest
 
 A symlink is a shortcut. When something opens a symlink named `.claude`, the
 filesystem quietly says "the real thing lives over there" and redirects. Claude
-Code cannot tell the difference, and does not need to.
+Code cannot tell the difference, and does not need to. Neither can `git` or
+`zsh` — as far as any program is concerned it opened a normal file.
 
-So the whole trick is two moves: put the real folder inside Google Drive, then
-drop a symlink in its old home pointing at the new one.
+So the whole trick is two moves per item: put the real file inside Google Drive,
+then drop a symlink in its old home pointing at the new one.
 
 <Flow
   caption="Every write lands inside the Drive folder, so Drive uploads it."
@@ -58,64 +64,125 @@ Manual backups feel important until the exact moment you need one.
 Install the Google Drive app, sign in, and let the first sync finish. Then save
 this and run it once:
 
-```bash title="link-claude-to-drive.sh" showLineNumbers
+```bash title="link-dotfiles-to-drive.sh" showLineNumbers
 #!/usr/bin/env bash
-set -euo pipefail
 
-root=""
+DOTFILES=(".claude" ".gitconfig" ".zshrc")
+DEST_SUBPATH="dotfiles-backup"
+
+echo "Looking for your Google Drive folder..."
+GDRIVE_ROOT=""
 for d in "$HOME/Library/CloudStorage"/GoogleDrive-*; do
   if [ -d "$d/My Drive" ]; then
-    root="$d/My Drive"
+    GDRIVE_ROOT="$d/My Drive"
     break
   fi
 done
 
-if [ -z "$root" ]; then
-  echo "No Google Drive found. Install it, sign in," >&2
-  echo "wait for the first sync, then re-run." >&2
-  exit 1
-fi
-
-dest="$root/dotfiles-backup/claude"
-mkdir -p "$(dirname "$dest")"
-
-if [ -L "$HOME/.claude" ]; then
-  echo "Already linked."
-elif [ -d "$HOME/.claude" ] && [ ! -e "$dest" ]; then
-  mv "$HOME/.claude" "$dest"
-  ln -s "$dest" "$HOME/.claude"
-elif [ -e "$dest" ] && [ ! -e "$HOME/.claude" ]; then
-  ln -s "$dest" "$HOME/.claude"
+if [ -z "$GDRIVE_ROOT" ]; then
+  echo "Could not find Google Drive. Install the app,"
+  echo "sign in, then run this again."
 else
-  echo "A copy exists in both places." >&2
-  echo "Merge them by hand before linking." >&2
-  exit 1
-fi
+  BASE="$GDRIVE_ROOT/$DEST_SUBPATH"
+  mkdir -p "$BASE"
 
-ls -ld "$HOME/.claude"
+  for name in "${DOTFILES[@]}"; do
+    SRC="$HOME/$name"
+    DEST="$BASE/$name"
+
+    if [ -L "$SRC" ]; then
+      echo "$name: already linked -> $(readlink "$SRC")"
+    elif [ -e "$SRC" ]; then
+      if [ -e "$DEST" ]; then
+        echo "$name: a copy exists in Drive already."
+        echo "  Check both by hand. Skipping."
+      else
+        mv "$SRC" "$DEST"
+        ln -s "$DEST" "$SRC"
+        echo "$name: moved into Drive and linked."
+      fi
+    elif [ -e "$DEST" ]; then
+      ln -s "$DEST" "$SRC"
+      echo "$name: linked to the synced copy."
+    else
+      echo "$name: not found anywhere — skipping."
+    fi
+  done
+fi
 ```
 
-Lines 5–11 find your Drive root, which on current macOS lives under
-`~/Library/CloudStorage/GoogleDrive-<your-email>`. The three branches then cover
-the three states you can be in: already linked, folder here and Drive empty, or
-Drive has the copy and this machine has nothing.
+Line 3 is the only line you edit. Add anything you want to travel — `.vimrc`,
+`.tmux.conf`, `.config/gh` — and remove anything you do not. The rest of the
+script does not care what is in the list.
 
-Quit Claude Code before running it. Moving a directory out from under a running
-process is asking for a confusing bug report.
+Lines 8–13 find your Drive root, which on current macOS lives under
+`~/Library/CloudStorage/GoogleDrive-<your-email>`. The `*` in that path is a
+wildcard, so the loop matches whichever email you signed in with, and stops at
+the first one that actually has a **My Drive** inside it.
+
+Run it with `bash`, not `sh`. The `DOTFILES=(...)` syntax on line 3 is a bash
+array, and `sh` on macOS will refuse it.
+
+## Reading the branches
+
+Each item in the list can be in one of five states, and lines 26–42 handle them
+in order. Knowing which branch you landed in is how you read the output.
+
+| Where the file is | What that means | What the script does |
+|---|---|---|
+| Already a symlink | You ran this before | Prints the target, changes nothing |
+| Home only | First run on this laptop | Moves it to Drive, links it |
+| Home **and** Drive | Two versions exist | Skips, tells you to look |
+| Drive only | A fresh laptop | Links to the synced copy |
+| Neither | You do not use that file | Skips quietly |
+
+The third row is the one that matters. Two copies means you edited `.zshrc` on
+both machines before wiring the sync up, and only you know which one is current.
+A script that guessed would eat the other. So it stops and hands the decision
+back.
+
+Quit Claude Code before running this. Moving a directory out from under a
+running process is asking for a confusing bug report.
 
 ## The second laptop
 
-Install Drive, sign in with the same account, and wait until
-`dotfiles-backup/claude` appears under **My Drive**. Then run the same script.
-It finds the synced copy, creates the symlink, and you are back to your usual
-setup — same skills, same hooks, same memory.
+Install Drive, sign in with the same account, and wait for `dotfiles-backup` to
+appear under **My Drive**. Then run the same script. It takes the fourth branch
+for every item, creates the symlinks, and you are back to your usual setup —
+same skills, same hooks, same aliases, same git identity.
 
-The script is safe to run twice. If everything is already wired up it says so
-and stops.
+One thing will confuse you: the synced copies are named `.claude` and
+`.gitconfig`, and Finder hides every name that starts with a dot. The folder
+will look empty. Check from a terminal instead:
+
+```bash
+ls -a ~/Library/CloudStorage/GoogleDrive-*/"My Drive"/dotfiles-backup
+```
+
+If you followed an earlier version of this post, your Claude folder synced to
+`dotfiles-backup/claude` without the dot. Rename it to `.claude` before running
+this script, or the script will not find it and will treat the machine as new.
+
+## Keep secrets out of the list
+
+Adding `.zshrc` and `.gitconfig` changes the risk. `~/.claude` holds config and
+transcripts. Shell config often holds live credentials, because exporting a
+token in `.zshrc` is the fastest way to make a CLI work and nobody goes back to
+tidy it up.
+
+<Callout type="warn">
+  Grep before you sync: `grep -iE 'key|token|secret|password' ~/.zshrc
+  ~/.gitconfig`. Anything it finds should move to a password manager or a
+  gitignored `~/.secrets` file that you source from `.zshrc` and never sync.
+</Callout>
+
+`projects/` inside `~/.claude` deserves the same care. It holds full session
+transcripts — your code, your terminal output, your prompts. Keep this in your
+own private Drive. Never a shared drive, never a machine someone else uses.
 
 ## What this does not fix
 
-Two honest limits, both worth knowing before you trust this.
+Three honest limits, all worth knowing before you trust this.
 
 **It is a backup, not a merge.** Google Drive syncs files, and it has no idea
 that `history.jsonl` is append-only or that a session transcript is mid-write.
@@ -124,16 +191,16 @@ it knows how: by keeping one version and parking the other next to it as a
 conflicted copy. Fine for one person moving between machines. Not a shared
 config for a team.
 
-**Not everything travels.** On macOS your login token is not in this folder —
-there is no credentials file in mine, because the Keychain holds it. That is
-good news for the blast radius, and it means a fresh laptop still needs one
-`claude` login. Check your own platform before assuming the same.
+**Your shell now depends on Drive being mounted.** If the Drive app is signed
+out or still starting up, `~/.zshrc` is a symlink pointing at nothing. Zsh does
+not warn you about that — it starts a shell with none of your aliases and no
+error message at all. If your prompt ever looks wrong after a reboot, check
+`ls -l ~/.zshrc` before you debug anything else.
 
-<Callout type="warn">
-  `projects/` holds full session transcripts — your code, your terminal output,
-  your prompts. Keep this in your own private Drive. Never a shared drive, never
-  a machine someone else uses.
-</Callout>
+**Not everything travels.** On macOS your Claude login token is not in this
+folder — there is no credentials file in mine, because the Keychain holds it.
+That is good news for the blast radius, and it means a fresh laptop still needs
+one `claude` login. Check your own platform before assuming the same.
 
 If the 362 MB bothers you, sync less. Point the symlink at a folder holding only
 `settings.json`, `CLAUDE.md`, `skills/`, and `hooks/`, and let the transcripts
@@ -141,7 +208,10 @@ and plugin code stay local where they belong.
 
 ## Takeaway
 
-Move it, link it, forget it. The same pattern carries `.gitconfig`, `.zshrc`,
-and your editor settings between machines for the same five minutes of work.
-Just keep secrets out of it — SSH keys and cloud credentials belong in a
-password manager, not a folder that syncs itself.
+Move it, link it, forget it. One array at the top of one script decides what
+follows you to the next laptop, and the same five minutes covers every dotfile
+you care about.
+
+Just keep secrets out of that array. SSH keys and cloud credentials belong in a
+password manager, not a folder that syncs itself to four machines and a web
+interface.
