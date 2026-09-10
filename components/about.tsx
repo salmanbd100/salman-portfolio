@@ -77,15 +77,24 @@ export function About() {
             </strong>{" "}
             — owning architecture from the database up to the interface,
             working across time zones, and mentoring junior engineers along the
-            way.
+            way. Public sector form platforms, a Swiss insurance portal, and
+            most recently the dashboards behind a{" "}
+            <strong className="text-ink font-medium">
+              European energy-market analytics product
+            </strong>
+            .
           </p>
 
           <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-4">
             My degree in{" "}
             <strong className="text-ink font-medium">statistics</strong> trained
             me to think in evidence, not assumptions — I profile before I
-            optimize, A/B test before I ship, and ground architecture decisions
-            in real performance data.
+            optimise, A/B test before I ship, and ground architecture decisions
+            in real performance data. It shows up in the work too:{" "}
+            <strong className="text-ink font-medium">
+              30+ market-pricing visualisations
+            </strong>{" "}
+            where the numbers have to be right before they can be readable.
           </p>
 
           <p className="text-[0.93rem] text-ink2 leading-[1.8] mb-4">

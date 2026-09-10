@@ -55,7 +55,8 @@ export function CtaBand() {
         <p className="text-[0.95rem] sm:text-[1rem] text-[rgba(246,245,241,0.78)] leading-[1.75] max-w-[46ch] mx-auto text-pretty">
           A messy requirement, a page that loads too slowly, a codebase nobody
           wants to touch. Nine years of shipping for Norwegian, Swiss, and US
-          teams says most of them are solvable — tell me yours.
+          teams — public sector, insurance, energy markets — says most of them
+          are solvable. Tell me yours.
         </p>
 
         {/* "Start here" needs somewhere to go: the band sits directly above

@@ -68,6 +68,12 @@ export const navLinks = [
 
 export const statCards: StatCard[] = [
   {
+    value: "70+",
+    label: "Features in 8 months",
+    description:
+      "Delivered to a European energy-market analytics platform, including 30+ charts",
+  },
+  {
     value: "40%",
     label: "Faster rendering",
     description:
@@ -85,18 +91,13 @@ export const statCards: StatCard[] = [
     description:
       "Swiss insurance portal redesign kept more customers through the funnel",
   },
-  {
-    value: "25%",
-    label: "Fewer frontend bugs",
-    description: "State management overhaul on a WCAG-compliant React application",
-  },
 ];
 
 export const breadthItems: BreadthItem[] = [
   {
     label: "Frontend Depth",
     description:
-      "React \u00B7 TypeScript \u00B7 Next.js \u00B7 Redux",
+      "React \u00B7 Svelte 5 \u00B7 TypeScript \u00B7 Next.js",
   },
   {
     label: "Backend & APIs",
@@ -122,20 +123,26 @@ export const experiences: Experience[] = [
     clientLabel: "Norwegian clients",
     role: "Senior Software Engineer",
     summary:
-      "Own the architecture of a government form-builder platform used across Norwegian municipalities \u2014 React and Svelte at the front, Node.js APIs and CI/CD pipelines behind them.",
+      "Currently own the biomethane product end to end on a Svelte 5 / SvelteKit energy-market analytics platform \u2014 dashboards, charts, and the data layer behind them. Before that, architected a government form-builder platform used across Norwegian municipalities.",
     bullets: [
+      "<strong>Delivered 70+ features</strong> to a Svelte 5 / SvelteKit energy-market analytics platform \u2014 <strong>owning the biomethane product\u2019s dashboards end to end</strong>, and contributing across PPA and EAC",
+      "<strong>Built 30+ ECharts data visualisations</strong> backed by TanStack Query and a Sanity-driven content layer \u2014 covering European biomethane, power PPA, and renewable-certificate pricing",
+      "<strong>Drove a migration</strong> from hand-written chart components to reusable JSON configurations, alongside permission-gated feature rollouts and shared UI component upgrades",
       "<strong>Architected</strong> a dynamic form-builder platform for Norwegian public sector clients \u2014 reduced form rendering latency by <strong>40%</strong>",
       "<strong>Introduced</strong> scalable Redux architecture and React best practices, cutting new-developer ramp-up time by <strong>50%</strong>",
-      "<strong>Built data visualisation</strong> solutions using Svelte \u2014 interactive charts and analytics dashboards optimised for performance",
       "<strong>Developed RESTful APIs</strong> with Node.js and integrated backend services for seamless data flow",
       "Acted as <strong>technical advisor</strong> across multiple teams, guiding architecture decisions and enforcing code quality",
     ],
     tags: [
+      "Svelte 5",
+      "SvelteKit",
+      "TypeScript",
+      "ECharts",
+      "TanStack Query",
+      "Sanity",
       "React",
       "Redux",
-      "TypeScript",
       "Next.js",
-      "Svelte",
       "Node.js",
       "REST API",
       "AWS",
@@ -203,15 +210,17 @@ export const skillCategories: SkillCategory[] = [
           { name: "React", tier: "core" },
           { name: "TypeScript", tier: "core" },
           { name: "Next.js", tier: "core" },
+          { name: "Svelte 5 / SvelteKit", tier: "core" },
           { name: "Redux", tier: "core" },
-          { name: "React Query", tier: "core" },
+          { name: "TanStack Query", tier: "core" },
         ],
       },
       {
         title: "Strong \u2014 regular production use",
         tags: [
           { name: "Angular", tier: "strong" },
-          { name: "Svelte", tier: "strong" },
+          { name: "ECharts", tier: "strong" },
+          { name: "Sanity CMS", tier: "strong" },
           { name: "TailwindCSS", tier: "strong" },
           { name: "SCSS", tier: "strong" },
           { name: "Framer Motion", tier: "strong" },
