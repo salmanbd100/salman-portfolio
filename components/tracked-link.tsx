@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 
 // Event names are a closed union because Vercel's dashboard groups by the raw
 // string — a typo silently becomes a second, near-empty row rather than an error.
-type EventName = "cv_download" | "contact_click" | "chat_open";
+type EventName = "cv_download" | "contact_click" | "chat_open" | "handbook_open";
 
 type EventProps = Record<string, string | number | boolean>;
 

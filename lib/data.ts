@@ -64,6 +64,7 @@ export const navLinks = [
   { label: "Experience", href: "/#experience" },
   { label: "Skills", href: "/#skills" },
   { label: "Blog", href: "/blog" },
+  { label: "Handbook", href: "/handbook" },
 ] as const;
 
 export const statCards: StatCard[] = [

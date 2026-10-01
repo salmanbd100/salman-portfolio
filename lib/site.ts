@@ -26,6 +26,19 @@ export const BLOG = {
   rssPath: "/blog/rss.xml",
 } as const;
 
+/**
+ * The Senior Full Stack Handbook is a VitePress site built from its own repo
+ * (salmanbd100/full-stack-software-engineer-guide) and deployed as its own
+ * Vercel project on every push there. next.config.ts rewrites PATH to ORIGIN,
+ * so a book change never needs this site redeployed. Links to it must be plain
+ * <a>, not next/link — it is another app, and the client router cannot render it.
+ */
+export const HANDBOOK = {
+  path: "/handbook",
+  origin:
+    process.env.HANDBOOK_ORIGIN ?? "https://senior-full-stack-handbook.vercel.app",
+} as const;
+
 /** Absolute URL for a site-relative path. Crawlers — LinkedIn especially —
  *  reject relative og:image URLs outright. */
 export function absoluteUrl(path: string): string {

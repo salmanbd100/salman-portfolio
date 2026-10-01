@@ -1,9 +1,23 @@
 import path from "node:path";
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
+import { HANDBOOK } from "./lib/site";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "md", "mdx"],
+
+  // The handbook is built with base "/handbook/", and its own vercel.json
+  // strips that prefix again, so the path is passed through unchanged. No
+  // trailing slash: the handbook 308s one to its own *.vercel.app host.
+  async rewrites() {
+    return [
+      { source: HANDBOOK.path, destination: `${HANDBOOK.origin}${HANDBOOK.path}` },
+      {
+        source: `${HANDBOOK.path}/:path*`,
+        destination: `${HANDBOOK.origin}${HANDBOOK.path}/:path*`,
+      },
+    ];
+  },
 };
 
 // Plugins MUST be named as strings with serializable options only. Turbopack

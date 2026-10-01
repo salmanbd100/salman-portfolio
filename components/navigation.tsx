@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/lib/data";
+import { HANDBOOK } from "@/lib/site";
+import { TrackedLink } from "@/components/tracked-link";
 import {
   Sheet,
   SheetContent,
@@ -53,12 +55,12 @@ export function Navigation() {
       <ul className="hidden md:flex items-center gap-6 list-none">
         {navLinks.map((link) => (
           <li key={link.href}>
-            <Link
+            <NavLink
               href={link.href}
               className="text-[0.72rem] font-medium tracking-[0.08em] uppercase text-ink3 no-underline transition-colors duration-150 hover:text-accent"
             >
               {link.label}
-            </Link>
+            </NavLink>
           </li>
         ))}
         <li>
@@ -98,14 +100,14 @@ export function Navigation() {
           </SheetTitle>
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
-              <Link
+              <NavLink
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="text-[0.78rem] font-medium tracking-[0.06em] uppercase text-ink2 no-underline py-3 px-3 rounded-md transition-colors hover:bg-bg2 hover:text-accent"
               >
                 {link.label}
-              </Link>
+              </NavLink>
             ))}
             <Link
               href="/#contact"
@@ -125,4 +127,20 @@ export function Navigation() {
       </Sheet>
     </nav>
   );
+}
+
+type NavLinkProps = {
+  href: string;
+  className: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+};
+
+// The handbook is a separate app behind a rewrite, so next/link would try to
+// fetch an RSC payload for it. A full page load is the only correct navigation.
+function NavLink({ href, ...props }: NavLinkProps) {
+  if (href.startsWith(HANDBOOK.path)) {
+    return <TrackedLink href={href} event="handbook_open" {...props} />;
+  }
+  return <Link href={href} {...props} />;
 }
