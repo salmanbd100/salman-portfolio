@@ -29,7 +29,7 @@ async function main() {
   }
 
   const file = path.join(CONTENT_DIR, `${slug}.mdx`);
-  const today = new Date().toISOString().slice(0, 10);
+  const today = localDate(new Date());
 
   await mkdir(CONTENT_DIR, { recursive: true });
 
@@ -49,6 +49,13 @@ async function main() {
   console.log(
     "\nFill in `description` and `tags`, then set `draft: false` to publish.",
   );
+}
+
+// toISOString() is UTC, which can be yesterday or tomorrow relative to the
+// author's wall clock.
+function localDate(date: Date): string {
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
 
 function slugify(title: string): string {
