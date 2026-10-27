@@ -14,6 +14,12 @@ rather than handed over at the API boundary.
 [GitHub](https://github.com/salmanbd100) ·
 [salman.bd100@gmail.com](mailto:salman.bd100@gmail.com)
 
+[![Next.js 16](https://img.shields.io/badge/Next.js-16-000?logo=nextdotjs)](https://nextjs.org)
+[![React 19](https://img.shields.io/badge/React-19-149eca?logo=react&logoColor=white)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind-v4-38bdf8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000?logo=vercel)](https://www.salmanrahman.com)
+
 > **This repository is two things:** my personal site and blog, and a working
 > sample of how I build — Next.js 16, fully static, no runtime data fetching.
 > Jump to [About this repository](#about-this-repository) for the engineering
@@ -89,6 +95,24 @@ with a 100% approval rate on ThemeForest.
 
 ---
 
+## Writing
+
+I write about the problems I actually hit, in plain English, with the code that
+fixed them.
+
+- [Why Turbopack Breaks MDX Syntax Highlighting](https://www.salmanrahman.com/blog/turbopack-mdx-syntax-highlighting)
+  — a Next.js 16 constraint most guides miss, and why the workaround is better
+  than the plugin
+- [Stop Picking Frameworks by What Your Team Knows](https://www.salmanrahman.com/blog/stop-picking-frameworks-by-what-your-team-knows)
+  — choosing a stack on the problem's terms rather than the team's comfort
+- [Sync your Claude Code config across laptops](https://www.salmanrahman.com/blog/sync-your-claude-code-config-across-laptops)
+  — a dotfiles setup for AI-assisted development
+
+I also keep a [Senior Full-Stack Handbook](https://www.salmanrahman.com/handbook)
+— a longer-form reference served from its own repository under this domain.
+
+---
+
 ## Tech stack
 
 **Frontend** — React · TypeScript · Next.js · Svelte 5 / SvelteKit · Redux · TanStack Query · Angular · TailwindCSS · SCSS · ECharts · Framer Motion · WCAG accessibility
@@ -144,6 +168,7 @@ content/blog/     the posts, as MDX
 lib/data.ts       every CV fact on the page — experience, skills, stats
 lib/blog/         the only code that touches the filesystem
 docs/             design records, including what the first design got wrong
+next.config.ts    MDX pipeline, plus the /handbook rewrite to its own deployment
 ```
 
 `lib/data.ts` is deliberately the single source of truth for the portfolio
